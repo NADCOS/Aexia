@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
 <title>AEXIA — Steam Games Package</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap');
@@ -52,14 +53,8 @@
     font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;
     white-space:nowrap;color:var(--white)!important;
   }
-  .gz-brand-mark{
-    width:30px;height:30px;flex:none;
-    background:
-      linear-gradient(135deg, transparent 45%, var(--coral) 46% 54%, transparent 55%),
-      linear-gradient(45deg, transparent 45%, var(--coral) 46% 54%, transparent 55%);
-    border:1.5px solid var(--coral);
-    border-radius:4px;
-  }
+  .gz-brand-mark{width:30px;height:30px;flex:none;object-fit:contain;}
+  .gz-root[data-theme="light"] .gz-brand-mark{filter:invert(1);}
   .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
   .gz-nav-links{
     display:flex;flex-wrap:wrap;
@@ -99,8 +94,10 @@
     font-size:clamp(56px,11vw,132px);
     font-weight:900;letter-spacing:-0.01em;text-transform:uppercase;
     line-height:0.92;margin:0 0 28px;
+    opacity:0;animation:gzTitleIn 0.8s ease-out forwards;
   }
-  .gz-hero-title .gz-accent{color:var(--coral);}
+  .gz-hero-title .gz-accent{color:var(--coral);display:inline-block;opacity:0;animation:gzTitleIn 0.8s ease-out forwards 0.22s;}
+  @keyframes gzTitleIn{ from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
   .gz-hero-row{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:28px;}
   .gz-price{
     font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral);letter-spacing:-0.01em;white-space:nowrap;
@@ -216,7 +213,7 @@
 
   <nav class="gz-nav">
     <a class="gz-brand-link" href="index.html">
-      <span class="gz-brand-mark"></span>
+      <img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo">
       <span>AEXIA<span class="gz-dot" style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span>
     </a>
     <ul class="gz-nav-links">
@@ -281,9 +278,6 @@
         <div class="gz-eyebrow"><span class="gz-dot">🔧</span> How It Works</div>
         <h2 class="gz-h2">Setup</h2>
         <p style="color:var(--dim);font-size:15px;max-width:440px;">I will set up your device and add games to your Steam library. Once setup is complete, you can use any Steam account and still access the games in the library.</p>
-        <div style="margin-top:26px;">
-          <a class="gz-btn gz-btn-outline" href="https://sites.google.com/view/steamsetupsample" target="_blank">↗ Remote Sample</a>
-        </div>
       </div>
       <ul class="gz-setup-list">
         <li><b>Device-based setup</b> — safe, secure, and does not affect your Steam account.</li>
@@ -306,7 +300,6 @@
       <img src="assets/gcash-qr.jpeg" alt="GCash QR code for payment" style="width:100%;border-radius:12px;border:1px solid var(--line);display:block;">
     </div>
     <div class="gz-link-row">
-      <a class="gz-btn gz-btn-outline" href="https://sites.google.com/view/steamproof" target="_blank">↗ Proof Of Transactions</a>
       <a class="gz-btn gz-btn-outline" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">↗ Vouch</a>
     </div>
   </section>
@@ -318,7 +311,6 @@
     <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Browse The Full Library</h2>
     <div class="gz-cover-grid">
       <img src="assets/covers/lies-of-p.jpg" alt="Lies of P cover">
-      <img src="assets/covers/naruto-storm-connections.png" alt="Naruto x Boruto: Ultimate Ninja Storm Connections cover">
       <img src="assets/covers/forza-horizon-6.jpg" alt="Forza Horizon 6 cover">
       <img src="assets/covers/god-of-war-ragnarok.jpg" alt="God of War Ragnarök cover">
       <img src="assets/covers/red-dead-redemption-2.jpg" alt="Red Dead Redemption 2 cover">
@@ -374,7 +366,7 @@
       <a class="gz-footer-btn" href="avail.html">↗ I Want To Avail</a>
     </div>
     <div class="gz-footer-bottom">
-      <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">GameZone on Facebook</a></span>
+      <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
       <a class="gz-top-btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a>
     </div>
   </div>

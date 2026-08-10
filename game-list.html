@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
 <title>AEXIA — Full Steam Games List</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -22,7 +23,8 @@
   .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
   .gz-nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex-wrap:wrap;}
   .gz-brand-link{display:flex;align-items:center;gap:12px;padding:22px 28px;font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;white-space:nowrap;color:var(--white)!important;}
-  .gz-brand-mark{width:30px;height:30px;flex:none;background:linear-gradient(135deg, transparent 45%, var(--coral) 46% 54%, transparent 55%),linear-gradient(45deg, transparent 45%, var(--coral) 46% 54%, transparent 55%);border:1.5px solid var(--coral);border-radius:4px;}
+  .gz-brand-mark{width:30px;height:30px;flex:none;object-fit:contain;}
+  .gz-root[data-theme="light"] .gz-brand-mark{filter:invert(1);}
   .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
   .gz-back{padding:22px 28px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
   .gz-theme-toggle{
@@ -61,7 +63,7 @@
 <div class="gz-root">
 
   <nav class="gz-nav">
-    <a class="gz-brand-link" href="index.html"><span class="gz-brand-mark"></span><span>AEXIA<span style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span></a>
+    <a class="gz-brand-link" href="index.html"><img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo"><span>AEXIA<span style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span></a>
     <button class="gz-theme-toggle" id="gz-theme-toggle" onclick="gzToggleTheme()" aria-label="Toggle light and dark mode">🌙</button>
     <a class="gz-back" href="index.html">← Back To Home</a>
   </nav>

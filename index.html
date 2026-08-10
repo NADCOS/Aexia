@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEXIA — Steam Games Package</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap');
+  :root{
+    --bg:#141414;
+    --panel:#1c1b19;
+    --line:rgba(255,255,255,0.1);
+    --coral:#4be4c6;
+    --coral-dim:rgba(75,228,198,0.15);
+    --white:#f4f2ee;
+    --dim:#9a968f;
+  }
+  .gz-root[data-theme="light"]{
+    --bg:#f6f5f1;
+    --panel:#ffffff;
+    --line:rgba(20,18,15,0.12);
+    --white:#18160f;
+    --dim:#6b675f;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .gz-root{
+    background:var(--bg);
+    color:var(--white);
+    font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;
+    line-height:1.5;
+    overflow-x:hidden;
+  }
+  .gz-root a{color:var(--coral);text-decoration:none;}
+  .gz-root a:hover{color:var(--white);}
+  .gz-mono{font-family:'JetBrains Mono',monospace;}
+  .gz-eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);
+  }
+  .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
+
+  /* NAV */
+  .gz-nav{
+    display:flex;align-items:center;justify-content:space-between;
+    border-bottom:1px solid var(--line);
+    flex-wrap:wrap;
+  }
+  .gz-brand-link{
+    display:flex;align-items:center;gap:12px;
+    padding:22px 28px;
+    font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;
+    white-space:nowrap;color:var(--white)!important;
+  }
+  .gz-brand-mark{
+    width:30px;height:30px;flex:none;
+    background:
+      linear-gradient(135deg, transparent 45%, var(--coral) 46% 54%, transparent 55%),
+      linear-gradient(45deg, transparent 45%, var(--coral) 46% 54%, transparent 55%);
+    border:1.5px solid var(--coral);
+    border-radius:4px;
+  }
+  .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
+  .gz-nav-links{
+    display:flex;flex-wrap:wrap;
+    margin:0;list-style:none;
+    border-left:1px solid var(--line);
+  }
+  .gz-nav-links li{border-left:1px solid var(--line);}
+  .gz-nav-links li:first-child{border-left:none;}
+  .gz-nav-links a{
+    display:block;padding:22px 26px;
+    font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);
+  }
+  .gz-nav-links a:hover{color:var(--coral);}
+  a.gz-nav-cta{
+    background:var(--coral);color:#1a0f09;
+    padding:22px 30px;font-size:13px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px;white-space:nowrap;
+  }
+  a.gz-nav-cta:hover{color:#1a0f09;background:#7ff0dc;}
+  .gz-theme-toggle{
+    background:transparent;border:1px solid var(--line);color:var(--white);
+    width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;margin:0 14px;flex:none;
+  }
+  .gz-theme-toggle:hover{border-color:var(--coral);}
+
+  /* HERO */
+  .gz-hero{padding:56px 28px 60px;max-width:1280px;margin:0 auto;}
+  .gz-hero-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px;}
+  .gz-hero-copy{max-width:340px;font-size:14px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--dim);}
+  .gz-barcode{
+    height:48px;width:220px;
+    background-image:repeating-linear-gradient(90deg, var(--white) 0 2px, transparent 2px 5px, var(--white) 5px 6px, transparent 6px 11px, var(--white) 11px 14px, transparent 14px 16px);
+    margin-top:16px;opacity:0.85;
+  }
+  .gz-hero-title{
+    font-size:clamp(56px,11vw,132px);
+    font-weight:900;letter-spacing:-0.01em;text-transform:uppercase;
+    line-height:0.92;margin:0 0 28px;
+  }
+  .gz-hero-title .gz-accent{color:var(--coral);}
+  .gz-hero-row{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:28px;}
+  .gz-price{
+    font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral);letter-spacing:-0.01em;white-space:nowrap;
+  }
+  .gz-price sub{font-size:16px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;vertical-align:middle;display:block;margin-top:6px;}
+  .gz-tagline{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    font-size:15px;color:var(--dim);letter-spacing:0.03em;max-width:520px;
+  }
+  .gz-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+    padding:16px 28px;border-radius:2px;cursor:pointer;text-decoration:none;
+  }
+  a.gz-btn-solid{background:var(--coral);color:#1a0f09;border:none;}
+  a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
+  a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
+  a.gz-btn-outline:hover{border-color:var(--coral);color:var(--coral);}
+
+  /* DIVIDER + FEATURES */
+  .gz-section{padding:52px 28px;max-width:1280px;margin:0 auto;}
+  .gz-hr{border-top:1px solid var(--line);margin:0 28px;}
+  .gz-features{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;}
+  .gz-feature-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;}
+  .gz-feature-list li{
+    display:flex;align-items:baseline;gap:14px;
+    font-size:17px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;
+  }
+  .gz-feature-list .gz-arrow{color:var(--coral);font-size:16px;}
+  .gz-stat-grid{display:flex;flex-direction:column;gap:26px;}
+  .gz-stat{display:flex;align-items:flex-start;gap:14px;}
+  .gz-stat-mark{width:9px;height:9px;margin-top:7px;flex:none;background:var(--coral);}
+  .gz-stat-mark.round{border-radius:50%;background:transparent;border:1.5px solid var(--white);}
+  .gz-stat-label{font-size:13px;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px;}
+  .gz-stat-value{font-size:19px;font-weight:800;letter-spacing:0.02em;text-transform:uppercase;}
+
+  /* SOLID BAR */
+  .gz-bar{
+    background:var(--coral);color:#1a0f09;
+    margin:0 28px;padding:16px 26px;
+    font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
+  }
+
+  /* SETUP */
+  .gz-setup-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+  .gz-h2{
+    font-size:clamp(30px,4vw,44px);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;
+    margin:14px 0 20px;line-height:1.05;
+  }
+  .gz-setup-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:16px;}
+  .gz-setup-list li{
+    display:flex;gap:12px;font-size:15px;color:var(--dim);line-height:1.55;
+    border-top:1px solid var(--line);padding-top:16px;
+  }
+  .gz-setup-list li:first-child{border-top:none;padding-top:0;}
+  .gz-setup-list b{color:var(--white);}
+
+  /* PAYMENT */
+  .gz-cover-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;}
+  .gz-cover-grid img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#0c0b0a;border-radius:8px;border:1px solid var(--line);display:block;}
+  .gz-pay-row{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 32px;}
+  .gz-chip{
+    border:1px solid var(--line);padding:12px 22px;border-radius:999px;
+    font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;
+    display:flex;align-items:center;gap:8px;
+  }
+  .gz-chip::before{content:"✓";color:var(--coral);font-weight:800;}
+  .gz-link-row{display:flex;flex-wrap:wrap;gap:16px;}
+
+  /* FOOTER CTA */
+  .gz-footer{position:relative;margin-top:40px;}
+  .gz-footer-ribbon{
+    background:var(--coral);color:#1a0f09;
+    padding:56px 28px 70px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
+    clip-path:polygon(0 12%, 4% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  .gz-footer-left{max-width:640px;}
+  .gz-footer-left .gz-eyebrow{color:rgba(20,10,5,0.65);}
+  .gz-footer-left .gz-eyebrow .gz-dot{color:#1a0f09;}
+  .gz-footer h3{font-size:clamp(26px,4vw,40px);font-weight:900;text-transform:uppercase;margin:10px 0 0;line-height:1.05;}
+  a.gz-footer-btn{
+    background:#1a0f09;color:var(--white);
+    padding:18px 32px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+    border-radius:2px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;
+  }
+  a.gz-footer-btn:hover{background:#2a1a10;color:var(--coral);}
+  .gz-footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+    padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;
+  }
+  a.gz-top-btn{
+    background:var(--coral);color:#1a0f09;width:36px;height:36px;border-radius:2px;
+    display:inline-flex;align-items:center;justify-content:center;font-weight:900;text-decoration:none;
+  }
+
+  @media (max-width:820px){
+    .gz-features,.gz-setup-grid{grid-template-columns:1fr;gap:32px;}
+    .gz-nav-cta{margin-left:auto;}
+  }
+  @media (max-width:480px){
+    .gz-section,.gz-hero{padding-left:18px;padding-right:18px;}
+    .gz-hr{margin:0 18px;}
+    .gz-bar{margin:0 18px;}
+    .gz-brand{padding:18px 18px;}
+    .gz-nav-links a{padding:16px 16px;}
+  }
+</style>
+</head>
+<body>
+<div class="gz-root">
+
+  <nav class="gz-nav">
+    <a class="gz-brand-link" href="index.html">
+      <span class="gz-brand-mark"></span>
+      <span>AEXIA<span class="gz-dot" style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span>
+    </a>
+    <ul class="gz-nav-links">
+      <li><a href="#gz-game-list">Game List</a></li>
+      <li><a href="#gz-new-added">New Added</a></li>
+      <li><a href="#gz-top-games">Top Games</a></li>
+    </ul>
+    <button class="gz-theme-toggle" id="gz-theme-toggle" onclick="gzToggleTheme()" aria-label="Toggle light and dark mode">🌙</button>
+    <a class="gz-nav-cta" href="avail.html">Avail Now ↗</a>
+  </nav>
+
+  <header class="gz-hero">
+    <div class="gz-hero-top">
+      <div class="gz-eyebrow"><span class="gz-dot">✳</span> Steam Package · Aexia PH — 2026</div>
+      <div>
+        <p class="gz-hero-copy">Enjoy access to a wide collection of Steam games, installed directly to your Steam library for a smooth and convenient gaming experience.</p>
+        <div class="gz-barcode"></div>
+      </div>
+    </div>
+    <h1 class="gz-hero-title">STEAM GAMES<br><span class="gz-accent">PACKAGE</span></h1>
+    <div class="gz-hero-row">
+      <div class="gz-price">₱999<sub>One-time payment</sub></div>
+      <div class="gz-tagline">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</div>
+    </div>
+    <a class="gz-btn gz-btn-solid" href="avail.html">↗ I Want To Avail</a>
+  </header>
+
+  <div class="gz-hr"></div>
+
+  <section class="gz-section">
+    <div class="gz-features">
+      <ul class="gz-feature-list">
+        <li><span class="gz-arrow">→</span> One-time payment, lifetime access</li>
+        <li><span class="gz-arrow">→</span> Available worldwide — no regional restrictions</li>
+        <li><span class="gz-arrow">→</span> Compatible with PCs, laptops &amp; handhelds</li>
+        <li><span class="gz-arrow">→</span> Supports Steam achievements &amp; cloud saves</li>
+        <li><span class="gz-arrow">→</span> Regularly updated with popular titles</li>
+        <li><span class="gz-arrow">→</span> Fast downloads, easy setup — install &amp; play</li>
+      </ul>
+      <div class="gz-stat-grid">
+        <div class="gz-stat">
+          <span class="gz-stat-mark"></span>
+          <div><div class="gz-stat-label">What's included</div><div class="gz-stat-value">Full Steam Library Access</div></div>
+        </div>
+        <div class="gz-stat">
+          <span class="gz-stat-mark round"></span>
+          <div><div class="gz-stat-label">Security</div><div class="gz-stat-value">Safe &amp; Secure Setup</div></div>
+        </div>
+        <div class="gz-stat">
+          <span class="gz-stat-mark"></span>
+          <div><div class="gz-stat-label">Setup time</div><div class="gz-stat-value">5–10 Minutes, Remote</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gz-bar">🎮 This is a tool for Steam apps — not a shared account.</div>
+
+  <section class="gz-section">
+    <div class="gz-setup-grid">
+      <div>
+        <div class="gz-eyebrow"><span class="gz-dot">🔧</span> How It Works</div>
+        <h2 class="gz-h2">Setup</h2>
+        <p style="color:var(--dim);font-size:15px;max-width:440px;">I will set up your device and add games to your Steam library. Once setup is complete, you can use any Steam account and still access the games in the library.</p>
+        <div style="margin-top:26px;">
+          <a class="gz-btn gz-btn-outline" href="https://sites.google.com/view/steamsetupsample" target="_blank">↗ Remote Sample</a>
+        </div>
+      </div>
+      <ul class="gz-setup-list">
+        <li><b>Device-based setup</b> — safe, secure, and does not affect your Steam account.</li>
+        <li><b>Fully transparent</b> — you stay logged into your Steam account and can watch the entire process.</li>
+        <li><b>Quick turnaround</b> — the setup takes only 5–10 minutes via remote using UltraViewer.</li>
+        <li><b>Your choice</b> — after setup, freely choose which games to install in your Steam library.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="gz-hr"></div>
+
+  <section class="gz-section">
+    <div class="gz-eyebrow"><span class="gz-dot">💵</span> Mode Of Payment</div>
+    <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Simple, Local Payment Options</h2>
+    <div class="gz-pay-row">
+      <span class="gz-chip">GCash</span>
+    </div>
+    <div style="max-width:220px;margin:0 0 32px;">
+      <img src="assets/gcash-qr.jpeg" alt="GCash QR code for payment" style="width:100%;border-radius:12px;border:1px solid var(--line);display:block;">
+    </div>
+    <div class="gz-link-row">
+      <a class="gz-btn gz-btn-outline" href="https://sites.google.com/view/steamproof" target="_blank">↗ Proof Of Transactions</a>
+      <a class="gz-btn gz-btn-outline" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">↗ Vouch</a>
+    </div>
+  </section>
+
+  <div class="gz-hr"></div>
+
+  <section class="gz-section" id="gz-game-list">
+    <div class="gz-eyebrow"><span class="gz-dot">🎮</span> Steam Games List</div>
+    <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Browse The Full Library</h2>
+    <div class="gz-cover-grid">
+      <img src="assets/covers/lies-of-p.jpg" alt="Lies of P cover">
+      <img src="assets/covers/naruto-storm-connections.png" alt="Naruto x Boruto: Ultimate Ninja Storm Connections cover">
+      <img src="assets/covers/forza-horizon-6.jpg" alt="Forza Horizon 6 cover">
+      <img src="assets/covers/god-of-war-ragnarok.jpg" alt="God of War Ragnarök cover">
+      <img src="assets/covers/red-dead-redemption-2.jpg" alt="Red Dead Redemption 2 cover">
+      <img src="assets/covers/gta-v.jpg" alt="Grand Theft Auto V cover">
+      <img src="assets/covers/ac-shadows.jpg" alt="Assassin's Creed Shadows cover">
+      <img src="assets/covers/resident-evil-requiem.jpg" alt="Resident Evil Requiem cover">
+    </div>
+    <div style="margin-top:26px;"><a class="gz-btn gz-btn-outline" href="game-list.html">↗ View Full Game List</a></div>
+  </section>
+
+  <section class="gz-section" id="gz-new-added">
+    <div class="gz-eyebrow"><span class="gz-dot">✨</span> New Added Games</div>
+    <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Freshly Added To The Library</h2>
+    <div class="gz-cover-grid">
+      <img src="assets/covers/dispatch.jpg" alt="Dispatch cover">
+      <img src="assets/covers/yakuza-0.jpg" alt="Yakuza 0 cover">
+      <img src="assets/covers/yakuza-kiwami-2.jpg" alt="Yakuza Kiwami 2 cover">
+      <img src="assets/covers/mgs-delta-snake-eater.jpg" alt="Metal Gear Solid Delta: Snake Eater cover">
+      <img src="assets/covers/silent-hill-f.jpg" alt="Silent Hill f cover">
+      <img src="assets/covers/ninja-gaiden-4.jpg" alt="Ninja Gaiden 4 cover">
+      <img src="assets/covers/ferocious.jpg" alt="Ferocious cover">
+      <img src="assets/covers/quarantine-zone.jpg" alt="Quarantine Zone: The Last Check cover">
+      <img src="assets/covers/nioh-3.jpg" alt="Nioh 3 cover">
+      <img src="assets/covers/death-stranding-2.jpg" alt="Death Stranding 2: On the Beach cover">
+    </div>
+    <div style="margin-top:26px;"><a class="gz-btn gz-btn-outline" href="game-list.html">↗ View All New Additions</a></div>
+  </section>
+
+  <section class="gz-section" id="gz-top-games">
+    <div class="gz-eyebrow"><span class="gz-dot">🏆</span> Top Games</div>
+    <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Most Requested Titles</h2>
+    <div class="gz-cover-grid">
+      <img src="assets/covers/top-death-stranding.jpg" alt="Death Stranding Director's Cut cover">
+      <img src="assets/covers/top-avengers.jpg" alt="Marvel's Avengers cover">
+      <img src="assets/covers/top-spiderman-2.jpg" alt="Marvel's Spider-Man 2 cover">
+      <img src="assets/covers/top-naruto-storm.jpg" alt="Naruto x Boruto Storm Connections cover">
+      <img src="assets/covers/top-mortal-kombat-11.jpg" alt="Mortal Kombat 11 cover">
+      <img src="assets/covers/top-sekiro.jpg" alt="Sekiro: Shadows Die Twice cover">
+      <img src="assets/covers/top-baldurs-gate-3.jpg" alt="Baldur's Gate 3 cover">
+      <img src="assets/covers/top-spirit-of-samurai.jpg" alt="The Spirit of the Samurai cover">
+      <img src="assets/covers/top-skyrim.jpg" alt="The Elder Scrolls V: Skyrim cover">
+      <img src="assets/covers/top-witcher-3.jpg" alt="The Witcher 3: Wild Hunt cover">
+    </div>
+    <div style="margin-top:26px;"><a class="gz-btn gz-btn-outline" href="game-list.html">↗ View Full Top Games List</a></div>
+  </section>
+
+  <div class="gz-footer">
+    <div class="gz-footer-ribbon">
+      <div class="gz-footer-left">
+        <div class="gz-eyebrow"><span class="gz-dot">📩</span> Interested Or Have Questions?</div>
+        <h3>Send Us A Message And Get Started Today.</h3>
+      </div>
+      <a class="gz-footer-btn" href="avail.html">↗ I Want To Avail</a>
+    </div>
+    <div class="gz-footer-bottom">
+      <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">GameZone on Facebook</a></span>
+      <a class="gz-top-btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑</a>
+    </div>
+  </div>
+
+</div>
+<script>
+function gzApplyTheme(t){
+  document.querySelector('.gz-root').setAttribute('data-theme', t);
+  var b = document.getElementById('gz-theme-toggle');
+  if (b) b.textContent = t === 'light' ? '☀️' : '🌙';
+}
+function gzToggleTheme(){
+  var cur = document.querySelector('.gz-root').getAttribute('data-theme') || 'dark';
+  var next = cur === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('gz-theme', next);
+  gzApplyTheme(next);
+}
+gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
+</script>
+</body>
+</html>

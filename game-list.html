@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEXIA — Full Steam Games List</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
+  :root{
+    --bg:#141414;--panel:#1c1b19;--line:rgba(255,255,255,0.1);
+    --coral:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
+  }
+  .gz-root[data-theme="light"]{
+    --bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
+  .gz-root a{color:var(--coral);text-decoration:none;}
+  .gz-root a:hover{color:var(--white);}
+  .gz-eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);}
+  .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
+  .gz-nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .gz-brand-link{display:flex;align-items:center;gap:12px;padding:22px 28px;font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;white-space:nowrap;color:var(--white)!important;}
+  .gz-brand-mark{width:30px;height:30px;flex:none;background:linear-gradient(135deg, transparent 45%, var(--coral) 46% 54%, transparent 55%),linear-gradient(45deg, transparent 45%, var(--coral) 46% 54%, transparent 55%);border:1.5px solid var(--coral);border-radius:4px;}
+  .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
+  .gz-back{padding:22px 28px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+  .gz-theme-toggle{
+    background:transparent;border:1px solid var(--line);color:var(--white);
+    width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;
+    display:inline-flex;align-items:center;justify-content:center;margin-left:auto;flex:none;
+  }
+  .gz-theme-toggle:hover{border-color:var(--coral);}
+  .gz-section{padding:52px 28px;max-width:1280px;margin:0 auto;}
+  .gz-h2{font-size:clamp(34px,6vw,64px);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;margin:14px 0 8px;line-height:1.02;}
+  .gz-sub{color:var(--dim);font-size:15px;max-width:560px;margin:0 0 40px;}
+  .gz-shelf{display:flex;flex-direction:column;gap:16px;}
+  .gz-shelf img{width:100%;border-radius:10px;border:1px solid var(--line);display:block;}
+  .gz-hr{border-top:1px solid var(--line);margin:0 28px;}
+  .gz-search{
+    width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);color:var(--white);
+    font-family:inherit;font-size:16px;padding:14px 18px;border-radius:6px;margin-bottom:32px;
+  }
+  .gz-search::placeholder{color:var(--dim);}
+  .gz-directory{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0 32px;column-count:1;}
+  .gz-letter-group{margin-bottom:22px;break-inside:avoid;}
+  .gz-letter{color:var(--coral);font-size:22px;font-weight:800;letter-spacing:0.04em;margin-bottom:8px;border-bottom:1px solid var(--line);padding-bottom:4px;}
+  .gz-game-item{font-size:15px;color:var(--white);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
+  .gz-game-item.hidden{display:none;}
+  .gz-count{color:var(--dim);font-size:13px;margin-top:-24px;margin-bottom:24px;letter-spacing:0.04em;text-transform:uppercase;}
+  .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:1280px;margin:20px auto 0;}
+  @media (max-width:480px){
+    .gz-section{padding-left:18px;padding-right:18px;}
+    .gz-brand,.gz-back{padding:18px 18px;}
+  }
+  @media (min-width:700px){ .gz-directory{column-count:2;} }
+  @media (min-width:1000px){ .gz-directory{column-count:3;} }
+</style>
+</head>
+<body>
+<div class="gz-root">
+
+  <nav class="gz-nav">
+    <a class="gz-brand-link" href="game-store-embed.html"><span class="gz-brand-mark"></span><span>AEXIA<span style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span></a>
+    <button class="gz-theme-toggle" id="gz-theme-toggle" onclick="gzToggleTheme()" aria-label="Toggle light and dark mode">🌙</button>
+    <a class="gz-back" href="game-store-embed.html">← Back To Home</a>
+  </nav>
+
+  <section class="gz-section">
+    <div class="gz-eyebrow"><span class="gz-dot">🎮</span> Steam Games List</div>
+    <h2 class="gz-h2">Full Library</h2>
+    <p class="gz-sub">Every title below is included with your one-time Steam Games Package. Search the directory or browse the shelf, then message us to check availability.</p>
+
+    <div class="gz-shelf">
+      <img src="assets/covers/library-grid-1.png" alt="Steam library cover art grid 1">
+      <img src="assets/covers/library-grid-2.png" alt="Steam library cover art grid 2">
+      <img src="assets/covers/library-grid-3.png" alt="Steam library cover art grid 3">
+      <img src="assets/covers/library-grid-4.png" alt="Steam library cover art grid 4">
+    </div>
+  </section>
+
+  <div class="gz-hr"></div>
+
+  <section class="gz-section">
+    <div class="gz-eyebrow"><span class="gz-dot">🔎</span> Search The Directory</div>
+    <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Full A–Z Game Directory</h2>
+    <input class="gz-search" type="text" id="gz-search-input" placeholder="Search a game title…" oninput="gzFilterGames(this.value)">
+    <div class="gz-count" id="gz-count"></div>
+    <div class="gz-directory" id="gz-directory"></div>
+  </section>
+
+  <div class="gz-footer-bottom">
+    <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">GameZone on Facebook</a></span>
+    <a href="game-store-embed.html">← Back To Home</a>
+  </div>
+
+</div>
+
+<script>
+var GAMES = ["ACE COMBAT\u21227: SKIES UNKNOWN","Age of Empires II: Definitive Edition","Age of Empires IV: Anniversary Edition","Age of Mythology: Retold","AI Limit","Alien: Rogue Incursion Evolved Edition","ARMORED CORE\u2122 VI FIRES OF RUBICON\u2122","Assetto Corsa EVO","Avowed","Baki Hanma: Blood Arena","Baldur's Gate 3","Batman: Arkham City GOTY","Battle Realms: Zen Edition","Black Myth: Wukong","BLEACH Rebirth of Souls","Blue Prince","Borderlands 3","Capcom Fighting Collection","Cars","Castlevania Dominus Collection","Castlevania: Lords of Shadow - Ultimate Edition","Clair Obscur: Expedition 33","Command & Conquer Generals Zero Hour","Command & Conquer: Red Alert\u2122 2 and Yuri's Revenge\u2122","Command & Conquer: Red Alert\u2122 3","Command & Conquer: Red Alert\u2122 3 - Uprising","Command & Conquer\u2122 Tiberian Sun\u2122 and Firestorm\u2122","Company of Heroes 3","Contra: Operation Galuga","Counter-Strike","Crash Bandicoot\u2122 4: It's About Time","Crash Bandicoot\u2122 N. Sane Trilogy","The Crew 2","CRISIS CORE \u2013FINAL FANTASY VII\u2013 REUNION","Cronos: The New Dawn","Cyberpunk 2077","Days Gone","DEATH STRANDING 2: ON THE BEACH","DEATH STRANDING DIRECTOR'S CUT","Devil May Cry 4 Special Edition","Devil May Cry 5","Directive 8020","DiRT 4","DiRT Rally 2.0","Dispatch","DOOM Eternal","DOOM: The Dark Ages","Dragon Age\u2122: The Veilguard","DRAGON BALL: Sparking! ZERO","DRAGON BALL XENOVERSE 2","DRAGON BALL Z: KAKAROT","DRAGON QUEST VII Reimagined","DRAGON QUEST XI S: Echoes of an Elusive Age \u2013 Definitive Edition","Dune: Imperium","DYNASTY WARRIORS: ORIGINS","Echoes of the End: Enhanced Edition","Eiyuden Chronicle: Hundred Heroes","ELDEN RING","ELDEN RING NIGHTREIGN","The Elder Scrolls IV: Oblivion Remastered","The Elder Scrolls V: Skyrim","Enotria: The Last Song","F1\u00ae Manager 2024","Fallout 4","Fallout: New Vegas","FANTASY LIFE i: The Girl Who Steals Time","Far Cry","FATAL FURY: City of the Wolves","FEROCIOUS","FINAL FANTASY TACTICS - The Ivalice Chronicles","FINAL FANTASY VII REBIRTH","FINAL FANTASY XVI","Forever Skies","Forspoken","Forza Horizon 4","Forza Horizon 5","Forza Horizon 6","Forza Motorsport","Ghost of Tsushima DIRECTOR'S CUT","Ghostrunner","Ghostrunner 2","God of War","God of War Ragnar\u00f6k","The Godfather","Granblue Fantasy: Relink","Grand Theft Auto IV: The Complete Edition","Grand Theft Auto V Enhanced","GUNDAM BREAKER 4","Half-Life","Hell is Us","Hollow Knight: Silksong","Hollywood Animal","Horizon Zero Dawn\u2122 Remastered","The Hundred Line -Last Defense Academy-","Indiana Jones and the Great Circle","Injustice\u2122 2","Invincible VS","inZOI","Jujutsu Kaisen Cursed Clash","THE KING OF FIGHTERS XV","Kingdom Come: Deliverance","Kingdom Come: Deliverance II","KINGDOM HEARTS HD 2.8 Final Chapter Prologue","The Last of Us\u2122 Part I","The Last of Us\u2122 Part II Remastered","Left 4 Dead 2","Legacy of Kain\u2122 Soul Reaver 1&2 Remastered","LEGO\u00ae 2K Drive","LEGO\u00ae Batman\u2122: Legacy of the Dark Knight","Lies of P","Little Nightmares III","Lords of the Fallen","Lost Skies","Lost Soul Aside\u2122","LUNAR Remastered Collection","Mafia III: Definitive Edition","Mafia: The Old Country","Mandragora: Whispers of the Witch Tree","Marvel vs. Capcom: Infinite","Marvel's Avengers - The Definitive Edition","Marvel's Guardians of the Galaxy","Marvel's Spider-Man 2","Marvel's Spider-Man: Miles Morales","Marvel's Spider-Man Remastered","Mega Man Battle Network Legacy Collection Vol. 2","MEGA MAN X DiVE Offline","Mega Man Zero/ZX Legacy Collection","METAL GEAR RISING: REVENGEANCE","METAL GEAR SOLID - Master Collection Version","METAL GEAR SOLID 3: Snake Eater - Master Collection Version","METAL GEAR SOLID \u0394: SNAKE EATER","METAL SLUG 3","Metal Slug Tactics","Metro Exodus","MindsEye","Minecraft Legends","Monster Energy Supercross 25 - The Official Video Game","MONSTER HUNTER RISE","Monster Hunter Stories","Monster Hunter: World","Monster Train 2","Mortal Kombat 11","MotoGP\u212225","Mount & Blade II: Bannerlord","MY HERO ACADEMIA: All's Justice","NARUTO X BORUTO Ultimate Ninja STORM CONNECTIONS","NBA 2K16","NBA 2K20","NBA 2K26","Nikoderiko: The Magical World \u2014 Director's Cut","Nine Sols","NINJA GAIDEN 2 Black","Ninja Gaiden 4","Nioh 3","OCTOPATH TRAVELER 0","OCTOPATH TRAVELER II","ONE PIECE BURNING BLOOD","ONE PIECE ODYSSEY","ONE PIECE: PIRATE WARRIORS 4","The Outer Worlds 2","Overcooked! All You Can Eat","Pax Augusta","A Plague Tale: Requiem","Plants vs. Zombies: Game of the Year","PRAGMATA","Quarantine Zone: The Last Check","Ready or Not","Red Dead Redemption","Red Dead Redemption 2","REPLACED","Resident Evil (1996)","Resident Evil 2 (1998)","Resident Evil 3 Nemesis (1999)","Resident Evil 4","Resident Evil Requiem","RIDE 4","Rise of the Ronin","RoadCraft","RuneScape: Dragonwilds","SAMURAI WARRIORS 5","SCUM","Sekiro\u2122: Shadows Die Twice","Senua's Saga: Hellblade II","SILENT HILL 2","SILENT HILL f","South of Midnight","The Spirit of the Samurai","S.T.A.L.K.E.R. 2: Heart of Chornobyl","S.T.A.L.K.E.R.: Clear Sky - Enhanced Edition","S.T.A.L.K.E.R.: Shadow of Chornobyl - Enhanced Edition","STAR WARS Jedi: Survivor\u2122","Starfield","Stellar Blade\u2122","Subnautica 2","Suikoden I&II HD Remaster Gate Rune and Dunan Unification War","SUPER BOMBERMAN COLLECTION","SUPER ROBOT WARS Y","Tainted Grail: The Fall of Avalon","Tales of ARISE","TEKKEN 8","Tempest Rising","Tomb Raider I-III Remastered Starring Lara Croft","Tomb Raider: Legend","Tony Hawk's\u2122 Pro Skater\u2122 1 + 2","Total War: NAPOLEON - Definitive Edition","Train Sim World\u00ae 5","Ultimate Marvel vs. Capcom 3","UNCHARTED\u2122: Legacy of Thieves Collection","Vampire: The Masquerade - Bloodlines 2","The Walking Dead: The Final Season","Warhammer 40,000: Space Marine 2","Watch_Dogs","Watch_Dogs 2","Windrose","The Witcher 3: Wild Hunt","Wo Long: Fallen Dynasty","Wreckfest 2","WWE 2K25","Yakuza 0","Yakuza Kiwami 2 (Legacy)"];
+
+function gzLetterOf(title){
+  var c = title.replace(/^(THE|A)\s+/i,'').trim()[0].toUpperCase();
+  return /[A-Z]/.test(c) ? c : '#';
+}
+function gzRender(){
+  var dir = document.getElementById('gz-directory');
+  var groups = {};
+  GAMES.forEach(function(g){ var l = gzLetterOf(g); (groups[l] = groups[l] || []).push(g); });
+  var letters = Object.keys(groups).sort();
+  var html = '';
+  letters.forEach(function(l){
+    html += '<div class="gz-letter-group"><div class="gz-letter">' + l + '</div>';
+    groups[l].forEach(function(g){ html += '<div class="gz-game-item" data-title="' + g.toLowerCase() + '">' + g + '</div>'; });
+    html += '</div>';
+  });
+  dir.innerHTML = html;
+  document.getElementById('gz-count').textContent = GAMES.length + ' Games Available';
+}
+function gzFilterGames(q){
+  q = q.toLowerCase();
+  var items = document.querySelectorAll('.gz-game-item');
+  var visible = 0;
+  items.forEach(function(item){
+    var match = item.getAttribute('data-title').indexOf(q) !== -1;
+    item.classList.toggle('hidden', !match);
+    if (match) visible++;
+  });
+  document.querySelectorAll('.gz-letter-group').forEach(function(group){
+    var anyVisible = group.querySelectorAll('.gz-game-item:not(.hidden)').length > 0;
+    group.style.display = anyVisible ? '' : 'none';
+  });
+  document.getElementById('gz-count').textContent = visible + ' Games Found';
+}
+gzRender();
+function gzApplyTheme(t){
+  document.querySelector('.gz-root').setAttribute('data-theme', t);
+  var b = document.getElementById('gz-theme-toggle');
+  if (b) b.textContent = t === 'light' ? '☀️' : '🌙';
+}
+function gzToggleTheme(){
+  var cur = document.querySelector('.gz-root').getAttribute('data-theme') || 'dark';
+  var next = cur === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('gz-theme', next);
+  gzApplyTheme(next);
+}
+gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
+</script>
+
+</body>
+</html>

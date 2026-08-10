@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEXIA — Avail Now</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
+  :root{
+    --bg:#141414;--panel:#1c1b19;--line:rgba(255,255,255,0.1);
+    --coral:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
+  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;}
+  .gz-root a{color:var(--coral);text-decoration:none;}
+  .gz-root a:hover{color:var(--white);}
+  .gz-eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);}
+  .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
+  .gz-nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex-wrap:wrap;}
+  .gz-brand-link{display:flex;align-items:center;gap:12px;padding:22px 28px;font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;white-space:nowrap;color:var(--white)!important;}
+  .gz-brand-mark{width:30px;height:30px;flex:none;background:linear-gradient(135deg, transparent 45%, var(--coral) 46% 54%, transparent 55%),linear-gradient(45deg, transparent 45%, var(--coral) 46% 54%, transparent 55%);border:1.5px solid var(--coral);border-radius:4px;}
+  .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
+  .gz-back{padding:22px 28px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+  .gz-theme-toggle{background:transparent;border:1px solid var(--line);color:var(--white);width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:auto;flex:none;}
+  .gz-theme-toggle:hover{border-color:var(--coral);}
+  .gz-section{padding:52px 28px;max-width:640px;margin:0 auto;}
+  .gz-h2{font-size:clamp(30px,5vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;margin:14px 0 10px;line-height:1.05;}
+  .gz-sub{color:var(--dim);font-size:15px;margin:0 0 32px;max-width:480px;}
+  .gz-qr-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;text-align:center;}
+  .gz-qr-card img{width:100%;max-width:280px;border-radius:12px;display:block;margin:0 auto 20px;}
+  .gz-qr-name{color:var(--coral);font-size:20px;font-weight:800;letter-spacing:0.02em;margin:0 0 6px;}
+  .gz-qr-detail{color:var(--dim);font-size:14px;letter-spacing:0.03em;margin:2px 0;}
+  .gz-steps{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .gz-steps li{display:flex;gap:14px;font-size:15px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px;}
+  .gz-steps li:first-child{border-top:none;padding-top:0;}
+  .gz-steps b{color:var(--white);}
+  .gz-step-num{color:var(--coral);font-weight:800;flex:none;}
+  .gz-fb-row{margin-top:32px;font-size:14px;color:var(--dim);}
+  @media (max-width:480px){
+    .gz-section{padding-left:18px;padding-right:18px;}
+    .gz-brand-link,.gz-back{padding:18px 18px;}
+  }
+</style>
+</head>
+<body>
+<div class="gz-root">
+
+  <nav class="gz-nav">
+    <a class="gz-brand-link" href="game-store-embed.html">
+      <span class="gz-brand-mark"></span>
+      <span>AEXIA<span style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span>
+    </a>
+    <button class="gz-theme-toggle" id="gz-theme-toggle" onclick="gzToggleTheme()" aria-label="Toggle light and dark mode">🌙</button>
+    <a class="gz-back" href="game-store-embed.html">← Back To Home</a>
+  </nav>
+
+  <section class="gz-section">
+    <div class="gz-eyebrow"><span class="gz-dot">💵</span> Mode Of Payment</div>
+    <h2 class="gz-h2">Pay Via GCash</h2>
+    <p class="gz-sub">You can make your payment through GCash using the QR code below.</p>
+
+    <div class="gz-qr-card">
+      <img src="assets/gcash-qr.jpeg" alt="GCash QR code for payment">
+      <div class="gz-qr-name">WI***N E.</div>
+      <div class="gz-qr-detail">Mobile No.: 0966 722 ••••</div>
+      <div class="gz-qr-detail">User ID: •••••••••182OZP</div>
+    </div>
+
+    <ul class="gz-steps">
+      <li><span class="gz-step-num">1.</span><span><b>Scan the QR code</b> above using your GCash app and send your payment.</span></li>
+      <li><span class="gz-step-num">2.</span><span><b>Install UltraViewer</b>, then send your ID, password, and payment receipt so setup can begin right away.</span></li>
+      <li><span class="gz-step-num">3.</span><span><b>Setup takes 5–10 minutes</b> and is fully transparent — you can watch the whole process.</span></li>
+    </ul>
+
+    <p class="gz-fb-row">🌍 For non-Filipino customers: if GCash isn't available in your country, message us directly for alternative payment options.</p>
+
+    <p class="gz-fb-row">Questions before you send payment? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
+  </section>
+
+</div>
+<script>
+function gzApplyTheme(t){
+  document.querySelector('.gz-root').setAttribute('data-theme', t);
+  var b = document.getElementById('gz-theme-toggle');
+  if (b) b.textContent = t === 'light' ? '☀️' : '🌙';
+}
+function gzToggleTheme(){
+  var cur = document.querySelector('.gz-root').getAttribute('data-theme') || 'dark';
+  var next = cur === 'dark' ? 'light' : 'dark';
+  localStorage.setItem('gz-theme', next);
+  gzApplyTheme(next);
+}
+gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
+</script>
+</body>
+</html>

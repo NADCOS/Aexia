@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
-<title>AEXIA — Avail Now</title>
+<title>AEXIA — Game Bypass</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
   :root{
@@ -30,11 +30,14 @@
   .gz-section{padding:52px 28px;max-width:640px;margin:0 auto;}
   .gz-h2{font-size:clamp(30px,5vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;margin:14px 0 10px;line-height:1.05;}
   .gz-sub{color:var(--dim);font-size:15px;margin:0 0 32px;max-width:480px;}
-  .gz-qr-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px;text-align:center;}
-  .gz-qr-card img{width:100%;max-width:280px;border-radius:12px;display:block;margin:0 auto 20px;}
-  .gz-qr-name{color:var(--coral);font-size:20px;font-weight:800;letter-spacing:0.02em;margin:0 0 6px;}
-  .gz-qr-detail{color:var(--dim);font-size:14px;letter-spacing:0.03em;margin:2px 0;}
-  .gz-steps{list-style:none;margin:32px 0 0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .gz-warn{background:var(--coral);color:#1a0f09;padding:16px 22px;font-size:14px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;border-radius:4px;margin:0 0 32px;}
+  .gz-link-row{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 40px;}
+  .gz-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:2px;text-decoration:none;}
+  a.gz-btn-solid{background:var(--coral);color:#1a0f09;}
+  a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
+  a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
+  a.gz-btn-outline:hover{border-color:var(--coral);color:var(--coral);}
+  .gz-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
   .gz-steps li{display:flex;gap:14px;font-size:15px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px;}
   .gz-steps li:first-child{border-top:none;padding-top:0;}
   .gz-steps b{color:var(--white);}
@@ -43,7 +46,6 @@
   .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#00B2FF,#006AFF);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease;}
   .gz-messenger-btn:hover{transform:scale(1.08);}
   .gz-messenger-btn svg{width:28px;height:28px;fill:#fff;}
-
   @media (max-width:480px){
     .gz-section{padding-left:18px;padding-right:18px;}
     .gz-brand-link,.gz-back{padding:18px 18px;}
@@ -63,27 +65,26 @@
   </nav>
 
   <section class="gz-section">
-    <div class="gz-eyebrow"><span class="gz-dot">💵</span> Mode Of Payment</div>
-    <h2 class="gz-h2">Pay Via GCash</h2>
-    <p class="gz-sub">You can make your payment through GCash using the QR code below.</p>
+    <div class="gz-eyebrow"><span class="gz-dot">🛠</span> Denuvo Bypass</div>
+    <h2 class="gz-h2">Game Bypass</h2>
+    <p class="gz-sub">Guide and download link for bypassing Denuvo protection on supported titles.</p>
 
-    <div class="gz-qr-card">
-      <img src="assets/gcash-qr.jpeg" alt="GCash QR code for payment">
-      <div class="gz-qr-name">WI***N E.</div>
-      <div class="gz-qr-detail">Mobile No.: 0966 722 ••••</div>
-      <div class="gz-qr-detail">User ID: •••••••••182OZP</div>
+    <div class="gz-warn">⚠ Turn off any antivirus / Windows Security before downloading the bypass file.</div>
+
+    <div class="gz-link-row">
+      <a class="gz-btn gz-btn-solid" href="https://mega.nz/folder/WjZjGQQC#L_HYzkuzPbX7MKKr2KcbKQ" target="_blank">↗ Download Bypass Games</a>
     </div>
 
     <ul class="gz-steps">
-      <li><span class="gz-step-num">1.</span><span><b>Scan the QR code</b> above using your GCash app and send your payment.</span></li>
-      <li><span class="gz-step-num">2.</span><span><b>Install UltraViewer</b>, then send your ID, password, and payment receipt so setup can begin right away.</span></li>
-      <li><span class="gz-step-num">3.</span><span><b>Setup takes 5–10 minutes</b> and is fully transparent — you can watch the whole process.</span></li>
+      <li><span class="gz-step-num">1.</span><span><b>Download the bypass file</b> using the button above.</span></li>
+      <li><span class="gz-step-num">2.</span><span><b>Extract the file</b> (WinRAR recommended), then copy all the files and the folder inside.</span></li>
+      <li><span class="gz-step-num">3.</span><span><b>Go to your Steam installation folder</b> and paste the files there, replacing existing files when prompted.</span></li>
+      <li><span class="gz-step-num">4.</span><span><b>Go back to the game and play.</b></span></li>
     </ul>
 
-    <p class="gz-fb-row">🌍 For non-Filipino customers: if GCash isn't available in your country, message us directly for alternative payment options.</p>
-
-    <p class="gz-fb-row">Questions before you send payment? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
+    <p class="gz-fb-row">Questions or need help with setup? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
   </section>
+
   <a class="gz-messenger-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank" aria-label="Message us on Facebook">
     <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
   </a>

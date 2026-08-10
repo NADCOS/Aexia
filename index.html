@@ -218,6 +218,10 @@
   a.gz-top-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   a.gz-top-btn:hover{background:#7ff0dc;color:#1a0f09;}
 
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#00B2FF,#006AFF);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease;}
+  .gz-messenger-btn:hover{transform:scale(1.08);}
+  .gz-messenger-btn svg{width:28px;height:28px;fill:#fff;}
+
   @media (max-width:820px){
     .gz-features,.gz-setup-grid{grid-template-columns:1fr;gap:32px;}
     .gz-steps{grid-template-columns:1fr;gap:16px;}
@@ -245,6 +249,7 @@
       <li><a href="#gz-game-list">Game List</a></li>
       <li><a href="#gz-new-added">New Added</a></li>
       <li><a href="#gz-top-games">Top Games</a></li>
+      <li><a href="game-bypass.html">Game Bypass</a></li>
     </ul>
     <button class="gz-theme-toggle" id="gz-theme-toggle" onclick="gzToggleTheme()" aria-label="Toggle light and dark mode">🌙</button>
     <a class="gz-nav-cta" href="avail.html">Avail Now ↗</a>
@@ -421,6 +426,9 @@
   </div>
 
   <a class="gz-top-btn" id="gz-top-btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Back to top">↑</a>
+  <a class="gz-messenger-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank" aria-label="Message us on Facebook">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
+  </a>
 
 </div>
 <script>

@@ -61,10 +61,23 @@
   }
   @media (min-width:700px){ .gz-directory{column-count:2;} }
   @media (min-width:1000px){ .gz-directory{column-count:3;} }
+
+  .gz-loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity 0.5s ease,visibility 0.5s ease;}
+  .gz-loader.gz-loader-hide{opacity:0;visibility:hidden;pointer-events:none;}
+  .gz-loader-mark{width:56px;height:56px;object-fit:contain;animation:gzLoaderPulse 1.1s ease-in-out infinite;}
+  .gz-root[data-theme="light"] .gz-loader-mark{filter:invert(1);}
+  @keyframes gzLoaderPulse{0%,100%{transform:scale(1);opacity:0.7;}50%{transform:scale(1.12);opacity:1;}}
+  .gz-loader-bar{width:160px;height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
+  .gz-loader-bar span{display:block;height:100%;width:0%;background:var(--coral);animation:gzLoaderFill 1.4s ease forwards;}
+  @keyframes gzLoaderFill{0%{width:0%;}60%{width:75%;}100%{width:100%;}}
 </style>
 </head>
 <body>
 <div class="gz-root">
+  <div class="gz-loader" id="gz-loader">
+    <img class="gz-loader-mark" src="assets/aexia-logo.svg" alt="">
+    <div class="gz-loader-bar"><span></span></div>
+  </div>
 
   <nav class="gz-nav">
     <a class="gz-brand-link" href="index.html"><img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo"><span>AEXIA<span style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span></a>
@@ -153,6 +166,16 @@ function gzToggleTheme(){
   localStorage.setItem('gz-theme', next);
   gzApplyTheme(next);
 }
+(function(){
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var l = document.getElementById('gz-loader');
+      if (!l) return;
+      l.classList.add('gz-loader-hide');
+      setTimeout(function(){ l.remove(); }, 600);
+    }, 500);
+  });
+})();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 </script>
 

@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Avail the AEXIA Steam Games Package via GCash. Scan the QR code, send your payment, and message us to begin setup.">
+<meta property="og:title" content="AEXIA — Avail Now">
+<meta property="og:description" content="Avail the AEXIA Steam Games Package via GCash. Scan the QR code, send your payment, and message us to begin setup.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/apple-touch-icon.png">
 <title>AEXIA — Avail Now</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -14,6 +19,8 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;}
+  .gz-skip-link{position:absolute;left:-999px;top:0;background:var(--coral);color:#1a0f09;padding:12px 20px;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.06em;z-index:10000;border-radius:0 0 6px 0;}
+  .gz-skip-link:focus{left:0;}
   .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
   .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#0d8a72;}
   .gz-root a{color:var(--coral-text);text-decoration:none;}
@@ -41,6 +48,9 @@
   .gz-steps b{color:var(--white);}
   .gz-step-num{color:var(--coral-text);font-weight:800;flex:none;}
   .gz-fb-row{margin-top:32px;font-size:14px;color:var(--dim);}
+  .gz-btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;text-decoration:none;}
+  a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
+  a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
   .gz-fb-btn{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 20px;border-radius:10px;background:linear-gradient(135deg,#00B2FF,#006AFF);color:#fff;font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;font-weight:800;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 6px 16px rgba(0,106,255,0.3);}
   .gz-fb-btn svg{width:22px;height:22px;fill:#fff;flex:none;}
   .gz-fb-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,106,255,0.4);color:#fff;}
@@ -69,10 +79,17 @@
   .gz-loader-bar{width:160px;height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
   .gz-loader-bar span{display:block;height:100%;width:0%;background:var(--coral);animation:gzLoaderFill 1.4s ease forwards;}
   @keyframes gzLoaderFill{0%{width:0%;}60%{width:75%;}100%{width:100%;}}
+
+  @media (prefers-reduced-motion: reduce){
+    .gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-loader-bar span{width:100%!important;}
+    .gz-fb-btn,.gz-qr-card img{transition:none!important;}
+  }
 </style>
 </head>
 <body>
 <div class="gz-root">
+  <a class="gz-skip-link" href="#gz-main">Skip to content</a>
   <div class="gz-loader" id="gz-loader">
     <img class="gz-loader-mark" src="assets/aexia-logo.svg" alt="">
     <div class="gz-loader-bar"><span></span></div>
@@ -89,7 +106,7 @@
     <a class="gz-back" href="index.html">← Back To Home</a>
   </nav>
 
-  <section class="gz-section">
+  <section class="gz-section" id="gz-main">
     <div class="gz-eyebrow"><span class="gz-dot">💵</span> Mode Of Payment</div>
     <h2 class="gz-h2">Pay Via GCash</h2>
     <p class="gz-sub">You can make your payment through GCash using the QR code below.</p>
@@ -112,6 +129,11 @@
     <p class="gz-fb-row">🌍 For non-Filipino customers: if GCash isn't available in your country, message us directly for alternative payment options.</p>
 
     <p class="gz-fb-row">Questions before you send payment? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;">
+      <a class="gz-btn gz-btn-outline" style="padding:12px 20px;font-size:13px;" href="game-list.html">↗ Full Game List</a>
+      <a class="gz-btn gz-btn-outline" style="padding:12px 20px;font-size:13px;" href="game-bypass.html">↗ Game Bypass</a>
+    </div>
   </section>
 
   <div class="gz-footer-bottom">

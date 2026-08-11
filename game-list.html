@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Browse the full AEXIA Steam games library — search or scroll the A–Z directory of every title included in the package.">
+<meta property="og:title" content="AEXIA — Full Steam Games List">
+<meta property="og:description" content="Browse the full AEXIA Steam games library — search or scroll the A–Z directory of every title included in the package.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/apple-touch-icon.png">
 <title>AEXIA — Full Steam Games List</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -17,6 +22,8 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;}
+  .gz-skip-link{position:absolute;left:-999px;top:0;background:var(--coral);color:#1a0f09;padding:12px 20px;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.06em;z-index:10000;border-radius:0 0 6px 0;}
+  .gz-skip-link:focus{left:0;}
   .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
   .gz-root a{color:var(--coral-text);text-decoration:none;}
   .gz-root a:hover{color:var(--white);}
@@ -28,6 +35,7 @@
   .gz-root[data-theme="light"] .gz-brand-mark{filter:invert(1);}
   .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
   .gz-back{padding:22px 28px;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+  .gz-crosslinks{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
   .gz-theme-toggle{
     background:transparent;border:1px solid var(--line);color:var(--white);
     width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;
@@ -55,6 +63,9 @@
   .gz-game-item{font-size:15px;color:var(--white);padding:5px 0;border-bottom:1px solid rgba(255,255,255,0.04);}
   .gz-game-item.hidden{display:none;}
   .gz-count{color:var(--dim);font-size:13px;margin-top:-24px;margin-bottom:24px;letter-spacing:0.04em;text-transform:uppercase;}
+  .gz-btn{display:inline-flex;align-items:center;gap:8px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;border-radius:2px;text-decoration:none;}
+  a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
+  a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
   .gz-empty{display:none;color:var(--dim);font-size:15px;padding:32px 0;text-align:center;}
   .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:1280px;margin:20px auto 0;}
   a.gz-top-btn{
@@ -65,6 +76,9 @@
   }
   a.gz-top-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   a.gz-top-btn:hover{background:#7ff0dc;color:#1a0f09;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
+  .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
   .gz-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);z-index:100;width:0%;}
   .gz-nav{position:sticky;top:0;z-index:50;background:var(--bg);}
@@ -94,10 +108,17 @@
   .gz-loader-bar{width:160px;height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
   .gz-loader-bar span{display:block;height:100%;width:0%;background:var(--coral);animation:gzLoaderFill 1.4s ease forwards;}
   @keyframes gzLoaderFill{0%{width:0%;}60%{width:75%;}100%{width:100%;}}
+
+  @media (prefers-reduced-motion: reduce){
+    .gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-loader-bar span{width:100%!important;}
+    .gz-shelf img,.gz-top-btn,.gz-messenger-btn{transition:none!important;}
+  }
 </style>
 </head>
 <body>
 <div class="gz-root">
+  <a class="gz-skip-link" href="#gz-main">Skip to content</a>
   <div class="gz-loader" id="gz-loader">
     <img class="gz-loader-mark" src="assets/aexia-logo.svg" alt="">
     <div class="gz-loader-bar"><span></span></div>
@@ -111,16 +132,16 @@
     <a class="gz-back" href="index.html">← Back To Home</a>
   </nav>
 
-  <section class="gz-section">
+  <section class="gz-section" id="gz-main">
     <div class="gz-eyebrow"><span class="gz-dot">🎮</span> Steam Games List</div>
     <h2 class="gz-h2">Full Library</h2>
     <p class="gz-sub">Every title below is included with your one-time Steam Games Package. Search the directory or browse the shelf, then message us to check availability.</p>
 
     <div class="gz-shelf">
-      <img src="assets/covers/library-grid-1.png" alt="Steam library cover art grid 1" onclick="gzOpenLightbox(this.src,this.alt)">
-      <img src="assets/covers/library-grid-2.png" alt="Steam library cover art grid 2" onclick="gzOpenLightbox(this.src,this.alt)">
-      <img src="assets/covers/library-grid-3.png" alt="Steam library cover art grid 3" onclick="gzOpenLightbox(this.src,this.alt)">
-      <img src="assets/covers/library-grid-4.png" alt="Steam library cover art grid 4" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img src="assets/covers/library-grid-1.jpg" alt="Steam library cover art grid 1" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img loading="lazy" src="assets/covers/library-grid-2.jpg" alt="Steam library cover art grid 2" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img loading="lazy" src="assets/covers/library-grid-3.jpg" alt="Steam library cover art grid 3" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img loading="lazy" src="assets/covers/library-grid-4.jpg" alt="Steam library cover art grid 4" onclick="gzOpenLightbox(this.src,this.alt)">
     </div>
   </section>
 
@@ -140,12 +161,21 @@
     <div class="gz-empty" id="gz-empty">No games found matching your search. Try a different title, or message us on Facebook.</div>
   </section>
 
+  <div class="gz-crosslinks gz-section" style="padding-top:0;">
+    <a class="gz-btn gz-btn-outline" style="padding:12px 20px;font-size:13px;" href="avail.html">↗ Avail Now</a>
+    <a class="gz-btn gz-btn-outline" style="padding:12px 20px;font-size:13px;" href="game-bypass.html">↗ Game Bypass</a>
+  </div>
+
   <div class="gz-footer-bottom">
     <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
     <a href="index.html">← Back To Home</a>
   </div>
 
   <a class="gz-top-btn" id="gz-top-btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Back to top">↑</a>
+
+  <a class="gz-messenger-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank" aria-label="Message us on Facebook Messenger">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
+  </a>
 
   <div class="gz-toast" id="gz-toast"></div>
   <div class="gz-lightbox" id="gz-lightbox" onclick="gzCloseLightbox()">

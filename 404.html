@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>AEXIA — Page Not Found</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
+  :root{
+    --bg:#141414;--panel:#1c1b19;--line:rgba(255,255,255,0.1);
+    --coral:#4be4c6;--coral-text:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
+  }
+  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#0d8a72;}
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:28px;}
+  .gz-root a{color:var(--coral-text);text-decoration:none;}
+  .gz-root a:hover{color:var(--white);}
+  .gz-brand-mark{width:44px;height:44px;object-fit:contain;margin-bottom:24px;}
+  .gz-root[data-theme="light"] .gz-brand-mark{filter:invert(1);}
+  .gz-eyebrow{font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);margin-bottom:14px;}
+  .gz-404{font-size:clamp(72px,16vw,160px);font-weight:900;letter-spacing:-0.02em;line-height:0.9;margin:0;color:var(--coral-text);}
+  .gz-msg{font-size:clamp(20px,3vw,28px);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;margin:12px 0 10px;}
+  .gz-sub{color:var(--dim);font-size:15px;max-width:420px;margin:0 0 32px;}
+  .gz-link-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .gz-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:2px;text-decoration:none;}
+  a.gz-btn-solid{background:var(--coral);color:#1a0f09;}
+  a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
+  a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
+  a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
+</style>
+</head>
+<body>
+<div class="gz-root" data-theme="dark" id="gz-theme-root">
+  <img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo">
+  <div class="gz-eyebrow">AEXIA · Steam Games Package</div>
+  <p class="gz-404">404</p>
+  <p class="gz-msg">Page Not Found</p>
+  <p class="gz-sub">This page doesn't exist or may have moved. Head back home or jump straight to the game list.</p>
+  <div class="gz-link-row">
+    <a class="gz-btn gz-btn-solid" href="index.html">↗ Back To Home</a>
+    <a class="gz-btn gz-btn-outline" href="game-list.html">↗ Full Game List</a>
+  </div>
+</div>
+<script>
+  document.getElementById('gz-theme-root').setAttribute('data-theme', localStorage.getItem('gz-theme') || 'dark');
+</script>
+</body>
+</html>

@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta name="description" content="Step-by-step guide and download link for bypassing Denuvo protection on supported AEXIA Steam titles.">
+<meta property="og:title" content="AEXIA — Game Bypass">
+<meta property="og:description" content="Step-by-step guide and download link for bypassing Denuvo protection on supported AEXIA Steam titles.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="assets/apple-touch-icon.png">
 <title>AEXIA — Game Bypass</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -14,6 +19,8 @@
   }
   *{box-sizing:border-box;}
   body{margin:0;}
+  .gz-skip-link{position:absolute;left:-999px;top:0;background:var(--coral);color:#1a0f09;padding:12px 20px;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.06em;z-index:10000;border-radius:0 0 6px 0;}
+  .gz-skip-link:focus{left:0;}
   .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
   .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#0d8a72;}
   .gz-root a{color:var(--coral-text);text-decoration:none;}
@@ -56,6 +63,9 @@
   .gz-steps li.gz-step-done .gz-step-num{background:var(--coral);color:#1a0f09;border-color:var(--coral);}
   .gz-steps li.gz-step-done span:not(.gz-step-num){text-decoration:line-through;}
   .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:640px;margin:40px auto 0;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
+  .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
   @media (max-width:480px){
     .gz-section{padding-left:18px;padding-right:18px;}
@@ -70,10 +80,17 @@
   .gz-loader-bar{width:160px;height:3px;background:var(--line);border-radius:2px;overflow:hidden;}
   .gz-loader-bar span{display:block;height:100%;width:0%;background:var(--coral);animation:gzLoaderFill 1.4s ease forwards;}
   @keyframes gzLoaderFill{0%{width:0%;}60%{width:75%;}100%{width:100%;}}
+
+  @media (prefers-reduced-motion: reduce){
+    .gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-loader-bar span{width:100%!important;}
+    .gz-steps li,.gz-step-progress-fill,.gz-messenger-btn{transition:none!important;}
+  }
 </style>
 </head>
 <body>
 <div class="gz-root">
+  <a class="gz-skip-link" href="#gz-main">Skip to content</a>
   <div class="gz-loader" id="gz-loader">
     <img class="gz-loader-mark" src="assets/aexia-logo.svg" alt="">
     <div class="gz-loader-bar"><span></span></div>
@@ -90,7 +107,7 @@
     <a class="gz-back" href="index.html">← Back To Home</a>
   </nav>
 
-  <section class="gz-section">
+  <section class="gz-section" id="gz-main">
     <div class="gz-eyebrow"><span class="gz-dot">🛠</span> AEXIA GAME Bypass</div>
     <h2 class="gz-h2">Game Bypass</h2>
     <p class="gz-sub">Guide and download link for bypassing Denuvo protection on supported titles.</p>
@@ -114,12 +131,21 @@
     </ul>
 
     <p class="gz-fb-row">Questions or need help with setup? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;">
+      <a class="gz-btn gz-btn-outline" style="padding:12px 20px;font-size:13px;" href="game-list.html">↗ Full Game List</a>
+      <a class="gz-btn gz-btn-outline" style="padding:12px 20px;font-size:13px;" href="avail.html">↗ Avail Now</a>
+    </div>
   </section>
 
   <div class="gz-footer-bottom">
     <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
     <a href="index.html">← Back To Home</a>
   </div>
+
+  <a class="gz-messenger-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank" aria-label="Message us on Facebook Messenger">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
+  </a>
 
 </div>
 <script>

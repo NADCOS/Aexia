@@ -212,26 +212,20 @@
   .gz-vouch-card{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 26px;margin-top:28px;}
 
   /* FOOTER CTA */
-  .gz-footer{position:relative;margin-top:40px;}
-  .gz-footer-ribbon{
-    background:var(--coral);color:#1a0f09;
-    padding:56px 28px 70px;
-    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;
-    clip-path:polygon(0 12%, 4% 0, 100% 0, 100% 100%, 0 100%);
+  .gz-footer{border-top:1px solid var(--line);margin-top:20px;}
+  .gz-footer-top{max-width:1280px;margin:0 auto;padding:64px 28px 0;display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;}
+  .gz-footer-h3{font-size:clamp(28px,4.5vw,52px);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;line-height:1.05;margin:14px 0 0;max-width:680px;}
+  .gz-footer-h3 .gz-accent{color:var(--coral-text);}
+  .gz-footer-actions{display:flex;flex-direction:column;gap:14px;flex:none;}
+  .gz-footer-barcode{
+    height:36px;width:180px;opacity:0.35;margin:40px 28px 0;max-width:calc(1280px - 56px);
+    margin-left:auto;margin-right:auto;
+    background-image:repeating-linear-gradient(90deg, var(--white) 0 2px, transparent 2px 5px, var(--white) 5px 6px, transparent 6px 11px, var(--white) 11px 14px, transparent 14px 16px);
   }
-  .gz-footer-left{max-width:640px;}
-  .gz-footer-left .gz-eyebrow{color:rgba(20,10,5,0.65);}
-  .gz-footer-left .gz-eyebrow .gz-dot{color:#1a0f09;}
-  .gz-footer h3{font-size:clamp(26px,4vw,40px);font-weight:900;text-transform:uppercase;margin:10px 0 0;line-height:1.05;}
-  a.gz-footer-btn{
-    background:#1a0f09;color:#f4f2ee;
-    padding:18px 32px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
-    border-radius:2px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-  }
-  a.gz-footer-btn:hover{background:#2a1a10;color:var(--coral);}
   .gz-footer-bottom{
+    max-width:1280px;margin:0 auto;
     display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
-    padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;
+    padding:24px 28px 56px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;
   }
   a.gz-top-btn{
     background:var(--coral);color:#1a0f09;width:44px;height:44px;border-radius:6px;
@@ -258,6 +252,7 @@
     .gz-bar{margin:0 18px;}
     .gz-brand{padding:18px 18px;}
     .gz-nav-links a{padding:16px 16px;}
+    .gz-footer-top,.gz-footer-bottom{padding-left:18px;padding-right:18px;}
   }
 
   .gz-loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity 0.5s ease,visibility 0.5s ease;}
@@ -462,22 +457,23 @@
   </section>
 
   <div class="gz-footer">
-    <div class="gz-footer-ribbon">
-      <div class="gz-footer-left">
+    <div class="gz-footer-top">
+      <div>
         <div class="gz-eyebrow"><span class="gz-dot">📩</span> Interested Or Have Questions?</div>
-        <h3>Send Us A Message And Get Started Today.</h3>
+        <h3 class="gz-footer-h3">Send Us A Message And Get <span class="gz-accent">Started Today.</span></h3>
       </div>
-      <a class="gz-footer-btn" href="avail.html">↗ Claim Your Access</a>
+      <div class="gz-footer-actions">
+        <a class="gz-btn gz-btn-solid" href="avail.html">↗ Claim Your Access</a>
+        <a class="gz-btn gz-btn-outline" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">💬 Message Us</a>
+      </div>
     </div>
+    <div class="gz-footer-barcode"></div>
     <div class="gz-footer-bottom">
       <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
     </div>
   </div>
 
   <a class="gz-top-btn" id="gz-top-btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Back to top">↑</a>
-  <a class="gz-messenger-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank" aria-label="Message us on Facebook">
-    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
-  </a>
 
 </div>
 <script>

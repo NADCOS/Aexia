@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>AEXIA — Avail Now</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -43,6 +44,16 @@
   .gz-fb-btn{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 20px;border-radius:10px;background:linear-gradient(135deg,#00B2FF,#006AFF);color:#fff;font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;font-weight:800;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 6px 16px rgba(0,106,255,0.3);}
   .gz-fb-btn svg{width:22px;height:22px;fill:#fff;flex:none;}
   .gz-fb-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,106,255,0.4);color:#fff;}
+
+  .gz-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);z-index:100;width:0%;}
+  .gz-nav{position:sticky;top:0;z-index:50;background:var(--bg);}
+  .gz-qr-card img{cursor:zoom-in;}
+  .gz-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--white);color:var(--bg);font-size:14px;font-weight:700;letter-spacing:0.03em;padding:12px 22px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,0.3);opacity:0;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;z-index:200;max-width:88vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .gz-toast.gz-show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .gz-lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;pointer-events:none;transition:opacity 0.25s ease;}
+  .gz-lightbox.gz-show{opacity:1;pointer-events:auto;}
+  .gz-lightbox img{max-width:min(90vw,500px);max-height:85vh;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,0.5);}
+  .gz-lightbox-close{position:absolute;top:24px;right:28px;color:#fff;font-size:30px;cursor:pointer;background:none;border:none;line-height:1;padding:6px;}
   .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:640px;margin:40px auto 0;}
 
   @media (max-width:480px){
@@ -67,6 +78,8 @@
     <div class="gz-loader-bar"><span></span></div>
   </div>
 
+  <div class="gz-progress" id="gz-progress"></div>
+
   <nav class="gz-nav">
     <a class="gz-brand-link" href="index.html">
       <img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo">
@@ -82,7 +95,7 @@
     <p class="gz-sub">You can make your payment through GCash using the QR code below.</p>
 
     <div class="gz-qr-card">
-      <img src="assets/gcash-qr.png" alt="GCash QR code for payment">
+      <img src="assets/gcash-qr.png" alt="GCash QR code for payment" onclick="gzOpenLightbox(this.src,this.alt)">
     </div>
 
     <ul class="gz-steps">
@@ -91,7 +104,7 @@
       <li><span class="gz-step-num">3.</span><span><b>Setup takes 5–10 minutes</b> and is fully transparent — you can watch the whole process.</span></li>
     </ul>
 
-    <a class="gz-fb-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">
+    <a class="gz-fb-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank" onclick="gzShowToast('Opening Messenger…')">
       <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
       Message Us On Messenger
     </a>
@@ -104,6 +117,12 @@
   <div class="gz-footer-bottom">
     <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
     <a href="index.html">← Back To Home</a>
+  </div>
+
+  <div class="gz-toast" id="gz-toast"></div>
+  <div class="gz-lightbox" id="gz-lightbox" onclick="gzCloseLightbox()">
+    <button class="gz-lightbox-close" onclick="gzCloseLightbox()" aria-label="Close">×</button>
+    <img id="gz-lightbox-img" alt="">
   </div>
 
 </div>
@@ -135,6 +154,32 @@ function gzToggleTheme(){
   }
 })();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
+window.addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var max = h.scrollHeight - h.clientHeight;
+  var p = document.getElementById('gz-progress');
+  if (p) p.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+}, {passive:true});
+function gzShowToast(msg){
+  var t = document.getElementById('gz-toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('gz-show');
+  clearTimeout(t._gzTimer);
+  t._gzTimer = setTimeout(function(){ t.classList.remove('gz-show'); }, 2200);
+}
+function gzOpenLightbox(src, alt){
+  var lb = document.getElementById('gz-lightbox');
+  var img = document.getElementById('gz-lightbox-img');
+  if (!lb || !img) return;
+  img.src = src; img.alt = alt || '';
+  lb.classList.add('gz-show');
+}
+function gzCloseLightbox(){
+  var lb = document.getElementById('gz-lightbox');
+  if (lb) lb.classList.remove('gz-show');
+}
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') gzCloseLightbox(); });
 </script>
 </body>
 </html>

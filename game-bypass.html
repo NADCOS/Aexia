@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>AEXIA — Game Bypass</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -43,6 +44,17 @@
   .gz-steps b{color:var(--white);}
   .gz-step-num{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--coral-text);color:var(--coral-text);font-weight:800;font-size:14px;flex:none;display:flex;align-items:center;justify-content:center;}
   .gz-fb-row{margin-top:32px;font-size:14px;color:var(--dim);}
+
+  .gz-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);z-index:100;width:0%;}
+  .gz-nav{position:sticky;top:0;z-index:50;background:var(--bg);}
+  .gz-step-progress-wrap{margin-bottom:20px;}
+  .gz-step-progress-label{font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;}
+  .gz-step-progress-track{height:6px;background:var(--line);border-radius:3px;overflow:hidden;}
+  .gz-step-progress-fill{height:100%;width:0%;background:var(--coral);transition:width 0.3s ease;}
+  .gz-steps li{cursor:pointer;}
+  .gz-steps li.gz-step-done{opacity:0.5;}
+  .gz-steps li.gz-step-done .gz-step-num{background:var(--coral);color:#1a0f09;border-color:var(--coral);}
+  .gz-steps li.gz-step-done span:not(.gz-step-num){text-decoration:line-through;}
   .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:640px;margin:40px auto 0;}
 
   @media (max-width:480px){
@@ -67,6 +79,8 @@
     <div class="gz-loader-bar"><span></span></div>
   </div>
 
+  <div class="gz-progress" id="gz-progress"></div>
+
   <nav class="gz-nav">
     <a class="gz-brand-link" href="index.html">
       <img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo">
@@ -87,11 +101,16 @@
       <a class="gz-btn gz-btn-solid" href="https://mega.nz/folder/WjZjGQQC#L_HYzkuzPbX7MKKr2KcbKQ" target="_blank">↗ Download Bypass Games</a>
     </div>
 
+    <div class="gz-step-progress-wrap">
+      <div class="gz-step-progress-label" id="gz-step-progress-label">0 / 4 Steps Completed</div>
+      <div class="gz-step-progress-track"><div class="gz-step-progress-fill" id="gz-step-progress-fill"></div></div>
+    </div>
+
     <ul class="gz-steps">
-      <li><span class="gz-step-num">1</span><span><b>Download the bypass file</b> using the button above.</span></li>
-      <li><span class="gz-step-num">2</span><span><b>Extract the file</b> (WinRAR recommended), then copy all the files and the folder inside.</span></li>
-      <li><span class="gz-step-num">3</span><span><b>Go to your Steam installation folder</b> and paste the files there, replacing existing files when prompted.</span></li>
-      <li><span class="gz-step-num">4</span><span><b>Go back to the game and play.</b></span></li>
+      <li data-step="1"><span class="gz-step-num">1</span><span><b>Download the bypass file</b> using the button above.</span></li>
+      <li data-step="2"><span class="gz-step-num">2</span><span><b>Extract the file</b> (WinRAR recommended), then copy all the files and the folder inside.</span></li>
+      <li data-step="3"><span class="gz-step-num">3</span><span><b>Go to your Steam installation folder</b> and paste the files there, replacing existing files when prompted.</span></li>
+      <li data-step="4"><span class="gz-step-num">4</span><span><b>Go back to the game and play.</b></span></li>
     </ul>
 
     <p class="gz-fb-row">Questions or need help with setup? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
@@ -131,6 +150,38 @@ function gzToggleTheme(){
   }
 })();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
+window.addEventListener('scroll', function(){
+  var h = document.documentElement;
+  var max = h.scrollHeight - h.clientHeight;
+  var p = document.getElementById('gz-progress');
+  if (p) p.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+}, {passive:true});
+var GZ_STEP_KEY = 'gz-bypass-steps';
+function gzLoadSteps(){
+  try { return JSON.parse(localStorage.getItem(GZ_STEP_KEY)) || {}; } catch (e) { return {}; }
+}
+function gzRenderStepState(){
+  var s = gzLoadSteps();
+  var items = document.querySelectorAll('.gz-steps li');
+  var done = 0;
+  items.forEach(function(li){
+    var isDone = !!s[li.getAttribute('data-step')];
+    li.classList.toggle('gz-step-done', isDone);
+    if (isDone) done++;
+  });
+  document.getElementById('gz-step-progress-label').textContent = done + ' / ' + items.length + ' Steps Completed';
+  document.getElementById('gz-step-progress-fill').style.width = (items.length ? (done / items.length * 100) : 0) + '%';
+}
+document.querySelectorAll('.gz-steps li').forEach(function(li){
+  li.addEventListener('click', function(){
+    var s = gzLoadSteps();
+    var n = li.getAttribute('data-step');
+    s[n] = !s[n];
+    localStorage.setItem(GZ_STEP_KEY, JSON.stringify(s));
+    gzRenderStepState();
+  });
+});
+gzRenderStepState();
 </script>
 </body>
 </html>

@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" type="image/svg+xml" href="assets/aexia-logo.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <title>AEXIA — Full Steam Games List</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
@@ -64,6 +65,20 @@
   }
   a.gz-top-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   a.gz-top-btn:hover{background:#7ff0dc;color:#1a0f09;}
+
+  .gz-progress{position:fixed;top:0;left:0;height:3px;background:var(--coral);z-index:100;width:0%;}
+  .gz-nav{position:sticky;top:0;z-index:50;background:var(--bg);}
+  .gz-sort-row{display:flex;gap:8px;margin-bottom:16px;}
+  .gz-sort-btn{border:1px solid var(--line);background:transparent;color:var(--dim);font-family:inherit;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;padding:8px 16px;border-radius:6px;cursor:pointer;}
+  .gz-sort-btn.active{border-color:var(--coral-text);color:var(--coral-text);}
+  .gz-game-item{cursor:pointer;}
+  .gz-shelf img{cursor:zoom-in;}
+  .gz-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--white);color:var(--bg);font-size:14px;font-weight:700;letter-spacing:0.03em;padding:12px 22px;border-radius:8px;box-shadow:0 10px 24px rgba(0,0,0,0.3);opacity:0;pointer-events:none;transition:opacity 0.25s ease,transform 0.25s ease;z-index:200;max-width:88vw;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .gz-toast.gz-show{opacity:1;transform:translateX(-50%) translateY(0);}
+  .gz-lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:300;display:flex;align-items:center;justify-content:center;padding:40px;opacity:0;pointer-events:none;transition:opacity 0.25s ease;}
+  .gz-lightbox.gz-show{opacity:1;pointer-events:auto;}
+  .gz-lightbox img{max-width:min(90vw,700px);max-height:85vh;border-radius:10px;box-shadow:0 24px 60px rgba(0,0,0,0.5);}
+  .gz-lightbox-close{position:absolute;top:24px;right:28px;color:#fff;font-size:30px;cursor:pointer;background:none;border:none;line-height:1;padding:6px;}
   @media (max-width:480px){
     .gz-section{padding-left:18px;padding-right:18px;}
     .gz-brand,.gz-back{padding:18px 18px;}
@@ -88,6 +103,8 @@
     <div class="gz-loader-bar"><span></span></div>
   </div>
 
+  <div class="gz-progress" id="gz-progress"></div>
+
   <nav class="gz-nav">
     <a class="gz-brand-link" href="index.html"><img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo"><span>AEXIA<span style="color:var(--coral)">•</span><span class="gz-brand-sub">Steam Games Package</span></span></a>
     <button class="gz-theme-toggle" id="gz-theme-toggle" onclick="gzToggleTheme()" aria-label="Toggle light and dark mode">🌙</button>
@@ -100,10 +117,10 @@
     <p class="gz-sub">Every title below is included with your one-time Steam Games Package. Search the directory or browse the shelf, then message us to check availability.</p>
 
     <div class="gz-shelf">
-      <img src="assets/covers/library-grid-1.png" alt="Steam library cover art grid 1">
-      <img src="assets/covers/library-grid-2.png" alt="Steam library cover art grid 2">
-      <img src="assets/covers/library-grid-3.png" alt="Steam library cover art grid 3">
-      <img src="assets/covers/library-grid-4.png" alt="Steam library cover art grid 4">
+      <img src="assets/covers/library-grid-1.png" alt="Steam library cover art grid 1" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img src="assets/covers/library-grid-2.png" alt="Steam library cover art grid 2" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img src="assets/covers/library-grid-3.png" alt="Steam library cover art grid 3" onclick="gzOpenLightbox(this.src,this.alt)">
+      <img src="assets/covers/library-grid-4.png" alt="Steam library cover art grid 4" onclick="gzOpenLightbox(this.src,this.alt)">
     </div>
   </section>
 
@@ -113,7 +130,11 @@
     <div class="gz-eyebrow"><span class="gz-dot">🔎</span> Search The Directory</div>
     <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Full A–Z Game Directory</h2>
     <div class="gz-az-nav" id="gz-az-nav"></div>
-    <input class="gz-search" type="text" id="gz-search-input" placeholder="Search a game title…" oninput="gzFilterGames(this.value)">
+    <div class="gz-sort-row">
+      <button class="gz-sort-btn active" id="gz-sort-asc" onclick="gzSetSort('asc')">A → Z</button>
+      <button class="gz-sort-btn" id="gz-sort-desc" onclick="gzSetSort('desc')">Z → A</button>
+    </div>
+    <input class="gz-search" type="text" id="gz-search-input" placeholder="Search a game title… (press / to focus)" oninput="gzFilterGames(this.value)">
     <div class="gz-count" id="gz-count"></div>
     <div class="gz-directory" id="gz-directory"></div>
     <div class="gz-empty" id="gz-empty">No games found matching your search. Try a different title, or message us on Facebook.</div>
@@ -126,6 +147,12 @@
 
   <a class="gz-top-btn" id="gz-top-btn" href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;" aria-label="Back to top">↑</a>
 
+  <div class="gz-toast" id="gz-toast"></div>
+  <div class="gz-lightbox" id="gz-lightbox" onclick="gzCloseLightbox()">
+    <button class="gz-lightbox-close" onclick="gzCloseLightbox()" aria-label="Close">×</button>
+    <img id="gz-lightbox-img" alt="">
+  </div>
+
 </div>
 
 <script>
@@ -135,22 +162,43 @@ function gzLetterOf(title){
   var c = title.replace(/^(THE|A)\s+/i,'').trim()[0].toUpperCase();
   return /[A-Z]/.test(c) ? c : '#';
 }
+var gzSortDir = 'asc';
+function gzSetSort(dir){
+  gzSortDir = dir;
+  document.getElementById('gz-sort-asc').classList.toggle('active', dir === 'asc');
+  document.getElementById('gz-sort-desc').classList.toggle('active', dir === 'desc');
+  gzRender();
+  gzFilterGames(document.getElementById('gz-search-input').value);
+}
 function gzRender(){
-  var dir = document.getElementById('gz-directory');
+  var dir = gzSortDir;
+  var cmp = function(a,b){ return dir === 'asc' ? a.localeCompare(b) : b.localeCompare(a); };
+  var dirEl = document.getElementById('gz-directory');
   var groups = {};
   GAMES.forEach(function(g){ var l = gzLetterOf(g); (groups[l] = groups[l] || []).push(g); });
-  var letters = Object.keys(groups).sort();
+  var letters = Object.keys(groups).sort(cmp);
   var html = '';
   var navHtml = '';
   letters.forEach(function(l){
     navHtml += '<a href="#gz-letter-' + l + '">' + l + '</a>';
+    groups[l].sort(cmp);
     html += '<div class="gz-letter-group" id="gz-letter-' + l + '"><div class="gz-letter">' + l + '</div>';
     groups[l].forEach(function(g){ html += '<div class="gz-game-item" data-title="' + g.toLowerCase() + '">' + g + '</div>'; });
     html += '</div>';
   });
-  dir.innerHTML = html;
+  dirEl.innerHTML = html;
   document.getElementById('gz-az-nav').innerHTML = navHtml;
   document.getElementById('gz-count').textContent = GAMES.length + ' Games Available';
+  document.querySelectorAll('.gz-game-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var title = item.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(title).then(function(){ gzShowToast('Copied "' + title + '"'); }).catch(function(){ gzShowToast('Copy failed — copy manually.'); });
+      } else {
+        gzShowToast('Copy not supported on this browser.');
+      }
+    });
+  });
 }
 function gzFilterGames(q){
   q = q.toLowerCase();
@@ -199,7 +247,37 @@ gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 window.addEventListener('scroll', function(){
   var btn = document.getElementById('gz-top-btn');
   if (btn) btn.classList.toggle('gz-visible', window.scrollY > 400);
+  var h = document.documentElement;
+  var max = h.scrollHeight - h.clientHeight;
+  var p = document.getElementById('gz-progress');
+  if (p) p.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
 }, {passive:true});
+function gzShowToast(msg){
+  var t = document.getElementById('gz-toast');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('gz-show');
+  clearTimeout(t._gzTimer);
+  t._gzTimer = setTimeout(function(){ t.classList.remove('gz-show'); }, 2200);
+}
+function gzOpenLightbox(src, alt){
+  var lb = document.getElementById('gz-lightbox');
+  var img = document.getElementById('gz-lightbox-img');
+  if (!lb || !img) return;
+  img.src = src; img.alt = alt || '';
+  lb.classList.add('gz-show');
+}
+function gzCloseLightbox(){
+  var lb = document.getElementById('gz-lightbox');
+  if (lb) lb.classList.remove('gz-show');
+}
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape') gzCloseLightbox();
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT') {
+    e.preventDefault();
+    document.getElementById('gz-search-input').focus();
+  }
+});
 </script>
 
 </body>

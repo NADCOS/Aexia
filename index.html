@@ -12,6 +12,7 @@
     --panel:#1c1b19;
     --line:rgba(255,255,255,0.1);
     --coral:#4be4c6;
+    --coral-text:#4be4c6;
     --coral-dim:rgba(75,228,198,0.15);
     --white:#f4f2ee;
     --dim:#9a968f;
@@ -22,6 +23,7 @@
     --line:rgba(20,18,15,0.12);
     --white:#18160f;
     --dim:#6b675f;
+    --coral-text:#0d8a72;
   }
   *{box-sizing:border-box;}
   body{margin:0;}
@@ -32,14 +34,14 @@
     line-height:1.5;
     overflow-x:hidden;
   }
-  .gz-root a{color:var(--coral);text-decoration:none;}
+  .gz-root a{color:var(--coral-text);text-decoration:none;}
   .gz-root a:hover{color:var(--white);}
   .gz-mono{font-family:'JetBrains Mono',monospace;}
   .gz-eyebrow{
     display:flex;align-items:center;gap:10px;
     font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);
   }
-  .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
+  .gz-eyebrow .gz-dot{color:var(--coral-text);font-size:15px;}
 
   /* NAV */
   .gz-nav{
@@ -67,7 +69,7 @@
     display:block;padding:22px 26px;
     font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--white);
   }
-  .gz-nav-links a:hover{color:var(--coral);}
+  .gz-nav-links a:hover{color:var(--coral-text);}
   a.gz-nav-cta{
     background:var(--coral);color:#1a0f09;
     padding:22px 30px;font-size:13px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
@@ -86,9 +88,18 @@
   .gz-hero-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px;}
   .gz-hero-copy{max-width:340px;font-size:14px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--dim);}
   .gz-barcode{
+    position:relative;overflow:hidden;
     height:48px;width:220px;
     background-image:repeating-linear-gradient(90deg, var(--white) 0 2px, transparent 2px 5px, var(--white) 5px 6px, transparent 6px 11px, var(--white) 11px 14px, transparent 14px 16px);
     margin-top:16px;opacity:0.85;
+  }
+  .gz-barcode::after{
+    content:"";position:absolute;top:0;left:0;width:2px;height:100%;
+    background:var(--coral-text);box-shadow:0 0 8px var(--coral-text);
+    animation:gzBarcodeScan 2.8s ease-in-out infinite;
+  }
+  @keyframes gzBarcodeScan{
+    0%{left:0;opacity:0;} 10%{opacity:1;} 50%{left:calc(100% - 2px);} 60%{opacity:1;} 90%{opacity:0;} 100%{left:0;opacity:0;}
   }
   .gz-hero-title{
     font-size:clamp(56px,11vw,132px);
@@ -96,11 +107,17 @@
     line-height:0.92;margin:0 0 28px;
     opacity:0;animation:gzTitleIn 0.8s ease-out forwards;
   }
-  .gz-hero-title .gz-accent{color:var(--coral);display:inline-block;opacity:0;animation:gzTitleIn 0.8s ease-out forwards 0.22s;}
+  .gz-hero-title .gz-accent{color:var(--coral-text);display:inline-block;opacity:0;animation:gzTitleIn 0.8s ease-out forwards 0.22s;}
   @keyframes gzTitleIn{ from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
+  .gz-anim{opacity:0;animation:gzFadeUp 0.7s ease-out forwards;}
+  @keyframes gzFadeUp{ from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
   .gz-hero-row{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:28px;}
   .gz-price{
-    font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral);letter-spacing:-0.01em;white-space:nowrap;
+    font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral-text);letter-spacing:-0.01em;white-space:nowrap;
+    animation:gzPricePulse 2.6s ease-in-out infinite;
+  }
+  @keyframes gzPricePulse{
+    0%,100%{filter:drop-shadow(0 0 0 rgba(75,228,198,0));} 50%{filter:drop-shadow(0 0 10px rgba(75,228,198,0.6));}
   }
   .gz-price sub{font-size:16px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;vertical-align:middle;display:block;margin-top:6px;}
   .gz-tagline{
@@ -115,7 +132,7 @@
   a.gz-btn-solid{background:var(--coral);color:#1a0f09;border:none;}
   a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
   a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
-  a.gz-btn-outline:hover{border-color:var(--coral);color:var(--coral);}
+  a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
 
   /* HOW IT WORKS */
   .gz-steps{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr;align-items:start;gap:0;}
@@ -126,7 +143,7 @@
   }
   .gz-step:hover{transform:translateY(-6px);border-color:var(--coral);box-shadow:0 16px 32px rgba(0,0,0,0.28);}
   .gz-step-badge{
-    width:38px;height:38px;border-radius:50%;border:1.5px solid var(--coral);color:var(--coral);
+    width:38px;height:38px;border-radius:50%;border:1.5px solid var(--coral-text);color:var(--coral-text);
     display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
     margin-bottom:18px;transition:background 0.25s ease,color 0.25s ease,transform 0.25s ease;
   }
@@ -134,18 +151,18 @@
   .gz-step-title{font-size:19px;font-weight:800;text-transform:uppercase;letter-spacing:0.01em;margin-bottom:8px;}
   .gz-step-desc{font-size:14px;color:var(--dim);line-height:1.5;}
   .gz-step-connector{display:flex;align-items:center;justify-content:center;height:38px;margin-top:26px;color:var(--dim);font-size:20px;transition:color 0.25s ease,transform 0.25s ease;}
-  .gz-step:hover + .gz-step-connector{color:var(--coral);transform:translateX(4px);}
+  .gz-step:hover + .gz-step-connector{color:var(--coral-text);transform:translateX(4px);}
 
   /* DIVIDER + FEATURES */
   .gz-section{padding:52px 28px;max-width:1280px;margin:0 auto;}
   .gz-hr{border-top:1px solid var(--line);margin:0 28px;}
-  .gz-features{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;}
+  .gz-features{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:36px 40px;}
   .gz-feature-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:20px;}
   .gz-feature-list li{
     display:flex;align-items:baseline;gap:14px;
     font-size:17px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase;
   }
-  .gz-feature-list .gz-arrow{color:var(--coral);font-size:16px;}
+  .gz-feature-list .gz-arrow{color:var(--coral-text);font-size:16px;}
   .gz-stat-grid{display:flex;flex-direction:column;gap:26px;}
   .gz-stat{display:flex;align-items:flex-start;gap:14px;}
   .gz-stat-mark{width:9px;height:9px;margin-top:7px;flex:none;background:var(--coral);}
@@ -155,9 +172,9 @@
 
   /* SOLID BAR */
   .gz-bar{
-    background:var(--coral);color:#1a0f09;
-    margin:0 28px;padding:16px 26px;
-    font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
+    background:var(--panel);color:var(--dim);border:1px solid var(--line);
+    margin:0 28px;padding:14px 26px;
+    font-size:14px;font-weight:600;letter-spacing:0.02em;
     display:flex;align-items:center;gap:10px;
   }
 
@@ -178,14 +195,21 @@
   /* PAYMENT */
   .gz-cover-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;}
   .gz-cover-grid img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#0c0b0a;border-radius:8px;border:1px solid var(--line);display:block;}
-  .gz-pay-row{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 32px;}
+  .gz-pay-row{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 28px;}
+  .gz-pay-grid{display:grid;grid-template-columns:170px 1fr;gap:44px;align-items:start;max-width:760px;}
+  .gz-pay-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
+  .gz-pay-steps li{display:flex;gap:12px;font-size:15px;color:var(--dim);line-height:1.5;border-top:1px solid var(--line);padding-top:14px;}
+  .gz-pay-steps li:first-child{border-top:none;padding-top:0;}
+  .gz-pay-steps b{color:var(--white);}
+  .gz-pay-step-num{color:var(--coral-text);font-weight:800;flex:none;}
   .gz-chip{
     border:1px solid var(--line);padding:12px 22px;border-radius:999px;
     font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;
     display:flex;align-items:center;gap:8px;
   }
-  .gz-chip::before{content:"✓";color:var(--coral);font-weight:800;}
+  .gz-chip::before{content:"✓";color:var(--coral-text);font-weight:800;}
   .gz-link-row{display:flex;flex-wrap:wrap;gap:16px;}
+  .gz-vouch-card{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:22px 26px;margin-top:28px;}
 
   /* FOOTER CTA */
   .gz-footer{position:relative;margin-top:40px;}
@@ -200,7 +224,7 @@
   .gz-footer-left .gz-eyebrow .gz-dot{color:#1a0f09;}
   .gz-footer h3{font-size:clamp(26px,4vw,40px);font-weight:900;text-transform:uppercase;margin:10px 0 0;line-height:1.05;}
   a.gz-footer-btn{
-    background:#1a0f09;color:var(--white);
+    background:#1a0f09;color:#f4f2ee;
     padding:18px 32px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
     border-radius:2px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;
   }
@@ -218,12 +242,12 @@
   a.gz-top-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   a.gz-top-btn:hover{background:#7ff0dc;color:#1a0f09;}
 
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#00B2FF,#006AFF);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease;}
-  .gz-messenger-btn:hover{transform:scale(1.08);}
-  .gz-messenger-btn svg{width:28px;height:28px;fill:#fff;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
+  .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
   @media (max-width:820px){
-    .gz-features,.gz-setup-grid{grid-template-columns:1fr;gap:32px;}
+    .gz-features,.gz-setup-grid,.gz-pay-grid{grid-template-columns:1fr;gap:32px;}
     .gz-steps{grid-template-columns:1fr;gap:16px;}
     .gz-step-connector{display:none;}
     .gz-nav-cta{margin-left:auto;}
@@ -270,18 +294,18 @@
 
   <header class="gz-hero">
     <div class="gz-hero-top">
-      <div class="gz-eyebrow"><span class="gz-dot">✳</span> Steam Package · Aexia PH</div>
+      <div class="gz-eyebrow gz-anim" style="animation-delay:0s;"><span class="gz-dot">✳</span> Steam Package · Aexia PH</div>
       <div>
-        <p class="gz-hero-copy">Enjoy access to a wide collection of Steam games, installed directly to your Steam library for a smooth and convenient gaming experience.</p>
-        <div class="gz-barcode"></div>
+        <p class="gz-hero-copy gz-anim" style="animation-delay:0.1s;">Installed directly to your Steam library.</p>
+        <div class="gz-barcode gz-anim" style="animation-delay:0.2s;"></div>
       </div>
     </div>
     <h1 class="gz-hero-title">STEAM GAMES<br><span class="gz-accent">PACKAGE</span></h1>
-    <div class="gz-hero-row">
+    <div class="gz-hero-row gz-anim" style="animation-delay:0.4s;">
       <div class="gz-price">₱999<sub>One-time payment</sub></div>
       <div class="gz-tagline">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</div>
     </div>
-    <a class="gz-btn gz-btn-solid" href="avail.html">↗ I Want To Avail</a>
+    <a class="gz-btn gz-btn-solid gz-anim" style="animation-delay:0.55s;" href="avail.html">↗ I Want To Avail</a>
   </header>
 
   <div class="gz-hr"></div>
@@ -364,11 +388,23 @@
     <div class="gz-pay-row">
       <span class="gz-chip">GCash</span>
     </div>
-    <div style="max-width:220px;margin:0 0 32px;">
-      <img src="assets/gcash-qr.jpeg" alt="GCash QR code for payment" style="width:100%;border-radius:12px;border:1px solid var(--line);display:block;">
+    <div class="gz-pay-grid">
+      <img src="assets/gcash-qr.png" alt="GCash QR code for payment" style="width:100%;border-radius:12px;border:1px solid var(--line);display:block;">
+      <ul class="gz-pay-steps">
+        <li><span class="gz-pay-step-num">1.</span><span><b>Scan the QR code</b> using your GCash app and send your payment.</span></li>
+        <li><span class="gz-pay-step-num">2.</span><span><b>Install UltraViewer</b>, then send your ID, password, and payment receipt.</span></li>
+        <li><span class="gz-pay-step-num">3.</span><span><b>Setup takes 5–10 minutes</b> and is fully transparent — you can watch the whole process.</span></li>
+      </ul>
     </div>
-    <div class="gz-link-row">
+    <div class="gz-vouch-card">
+      <div>
+        <div class="gz-stat-label" style="margin-bottom:4px;">Real Customer Feedback</div>
+        <div style="font-size:15px;color:var(--dim);max-width:360px;">See vouches and reviews from past customers on our Facebook page.</div>
+      </div>
       <a class="gz-btn gz-btn-outline" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">↗ Vouch</a>
+    </div>
+    <div class="gz-link-row" style="margin-top:20px;">
+      <a class="gz-btn gz-btn-solid" href="avail.html">↗ Full Payment Details</a>
     </div>
   </section>
 
@@ -431,7 +467,7 @@
         <div class="gz-eyebrow"><span class="gz-dot">📩</span> Interested Or Have Questions?</div>
         <h3>Send Us A Message And Get Started Today.</h3>
       </div>
-      <a class="gz-footer-btn" href="avail.html">↗ I Want To Avail</a>
+      <a class="gz-footer-btn" href="avail.html">↗ Claim Your Access</a>
     </div>
     <div class="gz-footer-bottom">
       <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>

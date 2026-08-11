@@ -40,9 +40,12 @@
   .gz-steps b{color:var(--white);}
   .gz-step-num{color:var(--coral);font-weight:800;flex:none;}
   .gz-fb-row{margin-top:32px;font-size:14px;color:var(--dim);}
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,#00B2FF,#006AFF);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease;}
-  .gz-messenger-btn:hover{transform:scale(1.08);}
-  .gz-messenger-btn svg{width:28px;height:28px;fill:#fff;}
+  .gz-fb-btn{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 20px;border-radius:10px;background:linear-gradient(135deg,#00B2FF,#006AFF);color:#fff;font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;font-weight:800;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 6px 16px rgba(0,106,255,0.3);}
+  .gz-fb-btn svg{width:22px;height:22px;fill:#fff;flex:none;}
+  .gz-fb-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,106,255,0.4);color:#fff;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
+  .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
   @media (max-width:480px){
     .gz-section{padding-left:18px;padding-right:18px;}
@@ -81,10 +84,7 @@
     <p class="gz-sub">You can make your payment through GCash using the QR code below.</p>
 
     <div class="gz-qr-card">
-      <img src="assets/gcash-qr.jpeg" alt="GCash QR code for payment">
-      <div class="gz-qr-name">WI***N E.</div>
-      <div class="gz-qr-detail">Mobile No.: 0966 722 ••••</div>
-      <div class="gz-qr-detail">User ID: •••••••••182OZP</div>
+      <img src="assets/gcash-qr.png" alt="GCash QR code for payment">
     </div>
 
     <ul class="gz-steps">
@@ -92,6 +92,11 @@
       <li><span class="gz-step-num">2.</span><span><b>Install UltraViewer</b>, then send your ID, password, and payment receipt so setup can begin right away.</span></li>
       <li><span class="gz-step-num">3.</span><span><b>Setup takes 5–10 minutes</b> and is fully transparent — you can watch the whole process.</span></li>
     </ul>
+
+    <a class="gz-fb-btn" href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.09 2 11.17c0 2.9 1.5 5.47 3.86 7.19V22l3.55-1.95c.83.23 1.7.36 2.59.36 5.52 0 10-4.09 10-9.24S17.52 2 12 2z"></path></svg>
+      Message Us On Messenger
+    </a>
 
     <p class="gz-fb-row">🌍 For non-Filipino customers: if GCash isn't available in your country, message us directly for alternative payment options.</p>
 

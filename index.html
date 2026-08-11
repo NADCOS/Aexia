@@ -57,6 +57,7 @@
   }
   .gz-brand-mark{width:30px;height:30px;flex:none;object-fit:contain;}
   .gz-root[data-theme="light"] .gz-brand-mark{filter:invert(1);}
+  .gz-root[data-theme="light"] .gz-footer-logo{filter:invert(1);}
   .gz-brand-sub{display:block;font-size:11px;font-weight:500;letter-spacing:0.12em;color:var(--dim);text-transform:uppercase;margin-top:2px;}
   .gz-nav-links{
     display:flex;flex-wrap:wrap;
@@ -194,7 +195,11 @@
 
   /* PAYMENT */
   .gz-cover-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:14px;}
-  .gz-cover-grid img{width:100%;aspect-ratio:3/4;object-fit:contain;background:#0c0b0a;border-radius:8px;border:1px solid var(--line);display:block;}
+  .gz-cover-item{position:relative;aspect-ratio:3/4;border-radius:8px;overflow:hidden;border:1px solid var(--line);background:#0c0b0a;transition:border-color 0.25s ease,box-shadow 0.25s ease;}
+  .gz-cover-item:hover{border-color:var(--coral-text);box-shadow:0 14px 28px rgba(0,0,0,0.35);z-index:2;}
+  .gz-cover-item img{width:100%;height:100%;object-fit:contain;display:block;cursor:pointer;transition:transform 0.25s ease;}
+  .gz-cover-item:hover img{transform:scale(1.06);}
+  .gz-cover-badge{position:absolute;top:8px;left:8px;background:var(--coral);color:#1a0f09;font-size:11px;font-weight:800;letter-spacing:0.06em;text-transform:uppercase;padding:4px 8px;border-radius:4px;z-index:1;}
   .gz-pay-row{display:flex;flex-wrap:wrap;gap:14px;margin:24px 0 28px;}
   .gz-pay-grid{display:grid;grid-template-columns:170px 1fr;gap:44px;align-items:start;max-width:760px;}
   .gz-pay-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
@@ -409,13 +414,13 @@
     <div class="gz-eyebrow"><span class="gz-dot">🎮</span> Steam Games List</div>
     <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Browse The Full Library</h2>
     <div class="gz-cover-grid">
-      <img src="assets/covers/lies-of-p.jpg" alt="Lies of P cover">
-      <img src="assets/covers/forza-horizon-6.jpg" alt="Forza Horizon 6 cover">
-      <img src="assets/covers/god-of-war-ragnarok.jpg" alt="God of War Ragnarök cover">
-      <img src="assets/covers/red-dead-redemption-2.jpg" alt="Red Dead Redemption 2 cover">
-      <img src="assets/covers/gta-v.jpg" alt="Grand Theft Auto V cover">
-      <img src="assets/covers/ac-shadows.jpg" alt="Assassin's Creed Shadows cover">
-      <img src="assets/covers/resident-evil-requiem.jpg" alt="Resident Evil Requiem cover">
+      <div class="gz-cover-item"><img src="assets/covers/lies-of-p.jpg" alt="Lies of P cover"></div>
+      <div class="gz-cover-item"><img src="assets/covers/forza-horizon-6.jpg" alt="Forza Horizon 6 cover"></div>
+      <div class="gz-cover-item"><img src="assets/covers/god-of-war-ragnarok.jpg" alt="God of War Ragnarök cover"></div>
+      <div class="gz-cover-item"><img src="assets/covers/red-dead-redemption-2.jpg" alt="Red Dead Redemption 2 cover"></div>
+      <div class="gz-cover-item"><img src="assets/covers/gta-v.jpg" alt="Grand Theft Auto V cover"></div>
+      <div class="gz-cover-item"><img src="assets/covers/ac-shadows.jpg" alt="Assassin's Creed Shadows cover"></div>
+      <div class="gz-cover-item"><img src="assets/covers/resident-evil-requiem.jpg" alt="Resident Evil Requiem cover"></div>
     </div>
     <div style="margin-top:26px;"><a class="gz-btn gz-btn-outline" href="game-list.html">↗ View Full Game List</a></div>
   </section>
@@ -424,16 +429,16 @@
     <div class="gz-eyebrow"><span class="gz-dot">✨</span> New Added Games</div>
     <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Freshly Added To The Library</h2>
     <div class="gz-cover-grid">
-      <img src="assets/covers/dispatch.jpg" alt="Dispatch cover">
-      <img src="assets/covers/yakuza-0.jpg" alt="Yakuza 0 cover">
-      <img src="assets/covers/yakuza-kiwami-2.jpg" alt="Yakuza Kiwami 2 cover">
-      <img src="assets/covers/mgs-delta-snake-eater.jpg" alt="Metal Gear Solid Delta: Snake Eater cover">
-      <img src="assets/covers/silent-hill-f.jpg" alt="Silent Hill f cover">
-      <img src="assets/covers/ninja-gaiden-4.jpg" alt="Ninja Gaiden 4 cover">
-      <img src="assets/covers/ferocious.jpg" alt="Ferocious cover">
-      <img src="assets/covers/quarantine-zone.jpg" alt="Quarantine Zone: The Last Check cover">
-      <img src="assets/covers/nioh-3.jpg" alt="Nioh 3 cover">
-      <img src="assets/covers/death-stranding-2.jpg" alt="Death Stranding 2: On the Beach cover">
+      <div class="gz-cover-item"><img src="assets/covers/dispatch.jpg" alt="Dispatch cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/yakuza-0.jpg" alt="Yakuza 0 cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/yakuza-kiwami-2.jpg" alt="Yakuza Kiwami 2 cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/mgs-delta-snake-eater.jpg" alt="Metal Gear Solid Delta: Snake Eater cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/silent-hill-f.jpg" alt="Silent Hill f cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/ninja-gaiden-4.jpg" alt="Ninja Gaiden 4 cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/ferocious.jpg" alt="Ferocious cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/quarantine-zone.jpg" alt="Quarantine Zone: The Last Check cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/nioh-3.jpg" alt="Nioh 3 cover"><span class="gz-cover-badge">New</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/death-stranding-2.jpg" alt="Death Stranding 2: On the Beach cover"><span class="gz-cover-badge">New</span></div>
     </div>
     <div style="margin-top:26px;"><a class="gz-btn gz-btn-outline" href="game-list.html">↗ View All New Additions</a></div>
   </section>
@@ -442,16 +447,16 @@
     <div class="gz-eyebrow"><span class="gz-dot">🏆</span> Top Games</div>
     <h2 class="gz-h2" style="font-size:clamp(24px,3vw,32px);">Most Requested Titles</h2>
     <div class="gz-cover-grid">
-      <img src="assets/covers/top-death-stranding.jpg" alt="Death Stranding Director's Cut cover">
-      <img src="assets/covers/top-avengers.jpg" alt="Marvel's Avengers cover">
-      <img src="assets/covers/top-spiderman-2.jpg" alt="Marvel's Spider-Man 2 cover">
-      <img src="assets/covers/top-naruto-storm.jpg" alt="Naruto x Boruto Storm Connections cover">
-      <img src="assets/covers/top-mortal-kombat-11.jpg" alt="Mortal Kombat 11 cover">
-      <img src="assets/covers/top-sekiro.jpg" alt="Sekiro: Shadows Die Twice cover">
-      <img src="assets/covers/top-baldurs-gate-3.jpg" alt="Baldur's Gate 3 cover">
-      <img src="assets/covers/top-spirit-of-samurai.jpg" alt="The Spirit of the Samurai cover">
-      <img src="assets/covers/top-skyrim.jpg" alt="The Elder Scrolls V: Skyrim cover">
-      <img src="assets/covers/top-witcher-3.jpg" alt="The Witcher 3: Wild Hunt cover">
+      <div class="gz-cover-item"><img src="assets/covers/top-death-stranding.jpg" alt="Death Stranding Director's Cut cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-avengers.jpg" alt="Marvel's Avengers cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-spiderman-2.jpg" alt="Marvel's Spider-Man 2 cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-naruto-storm.jpg" alt="Naruto x Boruto Storm Connections cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-mortal-kombat-11.jpg" alt="Mortal Kombat 11 cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-sekiro.jpg" alt="Sekiro: Shadows Die Twice cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-baldurs-gate-3.jpg" alt="Baldur's Gate 3 cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-spirit-of-samurai.jpg" alt="The Spirit of the Samurai cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-skyrim.jpg" alt="The Elder Scrolls V: Skyrim cover"><span class="gz-cover-badge">Top</span></div>
+      <div class="gz-cover-item"><img src="assets/covers/top-witcher-3.jpg" alt="The Witcher 3: Wild Hunt cover"><span class="gz-cover-badge">Top</span></div>
     </div>
     <div style="margin-top:26px;"><a class="gz-btn gz-btn-outline" href="game-list.html">↗ View Full Top Games List</a></div>
   </section>
@@ -469,6 +474,10 @@
     </div>
     <div class="gz-footer-barcode"></div>
     <div class="gz-footer-bottom">
+      <a href="index.html" style="display:flex;align-items:center;gap:8px;" aria-label="AEXIA home">
+        <img src="assets/aexia-logo.svg" alt="Aexia logo" style="width:22px;height:22px;object-fit:contain;" class="gz-footer-logo">
+        <span style="color:var(--white);font-weight:800;letter-spacing:0.08em;">AEXIA</span>
+      </a>
       <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
     </div>
   </div>
@@ -489,14 +498,19 @@ function gzToggleTheme(){
   gzApplyTheme(next);
 }
 (function(){
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var l = document.getElementById('gz-loader');
-      if (!l) return;
-      l.classList.add('gz-loader-hide');
-      setTimeout(function(){ l.remove(); }, 600);
-    }, 500);
-  });
+  var seen = sessionStorage.getItem('gz-visited');
+  function gzHideLoader(){
+    var l = document.getElementById('gz-loader');
+    if (!l) return;
+    l.classList.add('gz-loader-hide');
+    setTimeout(function(){ l.remove(); }, 600);
+  }
+  if (seen) {
+    gzHideLoader();
+  } else {
+    sessionStorage.setItem('gz-visited', '1');
+    window.addEventListener('load', function(){ setTimeout(gzHideLoader, 500); });
+  }
 })();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 window.addEventListener('scroll', function(){

@@ -9,16 +9,16 @@
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
   :root{
     --bg:#141414;--panel:#1c1b19;--line:rgba(255,255,255,0.1);
-    --coral:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
+    --coral:#4be4c6;--coral-text:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
   }
   *{box-sizing:border-box;}
   body{margin:0;}
   .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
-  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;}
-  .gz-root a{color:var(--coral);text-decoration:none;}
+  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#0d8a72;}
+  .gz-root a{color:var(--coral-text);text-decoration:none;}
   .gz-root a:hover{color:var(--white);}
   .gz-eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);}
-  .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
+  .gz-eyebrow .gz-dot{color:var(--coral-text);font-size:15px;}
   .gz-nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex-wrap:wrap;}
   .gz-brand-link{display:flex;align-items:center;gap:12px;padding:22px 28px;font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;white-space:nowrap;color:var(--white)!important;}
   .gz-brand-mark{width:30px;height:30px;flex:none;object-fit:contain;}
@@ -30,22 +30,21 @@
   .gz-section{padding:52px 28px;max-width:640px;margin:0 auto;}
   .gz-h2{font-size:clamp(30px,5vw,48px);font-weight:900;text-transform:uppercase;letter-spacing:-0.01em;margin:14px 0 10px;line-height:1.05;}
   .gz-sub{color:var(--dim);font-size:15px;margin:0 0 32px;max-width:480px;}
-  .gz-warn{background:var(--coral);color:#1a0f09;padding:16px 22px;font-size:14px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;border-radius:4px;margin:0 0 32px;}
+  .gz-warn{background:#e3a748;color:#3a2405;padding:16px 22px;font-size:14px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;border-radius:4px;margin:0 0 32px;border:1px solid rgba(58,36,5,0.15);}
   .gz-link-row{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 40px;}
   .gz-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:2px;text-decoration:none;}
   a.gz-btn-solid{background:var(--coral);color:#1a0f09;}
   a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
   a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
-  a.gz-btn-outline:hover{border-color:var(--coral);color:var(--coral);}
+  a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
   .gz-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
-  .gz-steps li{display:flex;gap:14px;font-size:15px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px;}
-  .gz-steps li:first-child{border-top:none;padding-top:0;}
+  .gz-steps li{display:flex;gap:16px;align-items:flex-start;font-size:15px;color:var(--dim);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:18px 20px;transition:transform 0.25s ease,border-color 0.25s ease,box-shadow 0.25s ease;}
+  .gz-steps li:hover{transform:translateY(-4px);border-color:var(--coral-text);box-shadow:0 14px 28px rgba(0,0,0,0.28);}
   .gz-steps b{color:var(--white);}
-  .gz-step-num{color:var(--coral);font-weight:800;flex:none;}
+  .gz-step-num{width:32px;height:32px;border-radius:50%;border:1.5px solid var(--coral-text);color:var(--coral-text);font-weight:800;font-size:14px;flex:none;display:flex;align-items:center;justify-content:center;}
   .gz-fb-row{margin-top:32px;font-size:14px;color:var(--dim);}
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
-  .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
-  .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
+  .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:640px;margin:40px auto 0;}
+
   @media (max-width:480px){
     .gz-section{padding-left:18px;padding-right:18px;}
     .gz-brand-link,.gz-back{padding:18px 18px;}
@@ -89,14 +88,19 @@
     </div>
 
     <ul class="gz-steps">
-      <li><span class="gz-step-num">1.</span><span><b>Download the bypass file</b> using the button above.</span></li>
-      <li><span class="gz-step-num">2.</span><span><b>Extract the file</b> (WinRAR recommended), then copy all the files and the folder inside.</span></li>
-      <li><span class="gz-step-num">3.</span><span><b>Go to your Steam installation folder</b> and paste the files there, replacing existing files when prompted.</span></li>
-      <li><span class="gz-step-num">4.</span><span><b>Go back to the game and play.</b></span></li>
+      <li><span class="gz-step-num">1</span><span><b>Download the bypass file</b> using the button above.</span></li>
+      <li><span class="gz-step-num">2</span><span><b>Extract the file</b> (WinRAR recommended), then copy all the files and the folder inside.</span></li>
+      <li><span class="gz-step-num">3</span><span><b>Go to your Steam installation folder</b> and paste the files there, replacing existing files when prompted.</span></li>
+      <li><span class="gz-step-num">4</span><span><b>Go back to the game and play.</b></span></li>
     </ul>
 
     <p class="gz-fb-row">Questions or need help with setup? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
   </section>
+
+  <div class="gz-footer-bottom">
+    <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
+    <a href="index.html">← Back To Home</a>
+  </div>
 
 </div>
 <script>
@@ -112,14 +116,19 @@ function gzToggleTheme(){
   gzApplyTheme(next);
 }
 (function(){
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var l = document.getElementById('gz-loader');
-      if (!l) return;
-      l.classList.add('gz-loader-hide');
-      setTimeout(function(){ l.remove(); }, 600);
-    }, 500);
-  });
+  var seen = sessionStorage.getItem('gz-visited');
+  function gzHideLoader(){
+    var l = document.getElementById('gz-loader');
+    if (!l) return;
+    l.classList.add('gz-loader-hide');
+    setTimeout(function(){ l.remove(); }, 600);
+  }
+  if (seen) {
+    gzHideLoader();
+  } else {
+    sessionStorage.setItem('gz-visited', '1');
+    window.addEventListener('load', function(){ setTimeout(gzHideLoader, 500); });
+  }
 })();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 </script>

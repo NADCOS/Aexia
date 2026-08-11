@@ -9,16 +9,16 @@
   @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
   :root{
     --bg:#141414;--panel:#1c1b19;--line:rgba(255,255,255,0.1);
-    --coral:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
+    --coral:#4be4c6;--coral-text:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
   }
   *{box-sizing:border-box;}
   body{margin:0;}
   .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
-  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;}
-  .gz-root a{color:var(--coral);text-decoration:none;}
+  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#0d8a72;}
+  .gz-root a{color:var(--coral-text);text-decoration:none;}
   .gz-root a:hover{color:var(--white);}
   .gz-eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);}
-  .gz-eyebrow .gz-dot{color:var(--coral);font-size:15px;}
+  .gz-eyebrow .gz-dot{color:var(--coral-text);font-size:15px;}
   .gz-nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex-wrap:wrap;}
   .gz-brand-link{display:flex;align-items:center;gap:12px;padding:22px 28px;font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;white-space:nowrap;color:var(--white)!important;}
   .gz-brand-mark{width:30px;height:30px;flex:none;object-fit:contain;}
@@ -38,14 +38,12 @@
   .gz-steps li{display:flex;gap:14px;font-size:15px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px;}
   .gz-steps li:first-child{border-top:none;padding-top:0;}
   .gz-steps b{color:var(--white);}
-  .gz-step-num{color:var(--coral);font-weight:800;flex:none;}
+  .gz-step-num{color:var(--coral-text);font-weight:800;flex:none;}
   .gz-fb-row{margin-top:32px;font-size:14px;color:var(--dim);}
   .gz-fb-btn{margin-top:28px;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:15px 20px;border-radius:10px;background:linear-gradient(135deg,#00B2FF,#006AFF);color:#fff;font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;font-weight:800;font-size:16px;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease;box-shadow:0 6px 16px rgba(0,106,255,0.3);}
   .gz-fb-btn svg{width:22px;height:22px;fill:#fff;flex:none;}
   .gz-fb-btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(0,106,255,0.4);color:#fff;}
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
-  .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
-  .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
+  .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:640px;margin:40px auto 0;}
 
   @media (max-width:480px){
     .gz-section{padding-left:18px;padding-right:18px;}
@@ -103,6 +101,11 @@
     <p class="gz-fb-row">Questions before you send payment? Message us on <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">Facebook</a>.</p>
   </section>
 
+  <div class="gz-footer-bottom">
+    <span>Follow us — <a href="https://www.facebook.com/share/1Cctojfrtn/?mibextid=wwXIfr" target="_blank">AEXIAGAMES ON FACEBOOK</a></span>
+    <a href="index.html">← Back To Home</a>
+  </div>
+
 </div>
 <script>
 function gzApplyTheme(t){
@@ -117,14 +120,19 @@ function gzToggleTheme(){
   gzApplyTheme(next);
 }
 (function(){
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var l = document.getElementById('gz-loader');
-      if (!l) return;
-      l.classList.add('gz-loader-hide');
-      setTimeout(function(){ l.remove(); }, 600);
-    }, 500);
-  });
+  var seen = sessionStorage.getItem('gz-visited');
+  function gzHideLoader(){
+    var l = document.getElementById('gz-loader');
+    if (!l) return;
+    l.classList.add('gz-loader-hide');
+    setTimeout(function(){ l.remove(); }, 600);
+  }
+  if (seen) {
+    gzHideLoader();
+  } else {
+    sessionStorage.setItem('gz-visited', '1');
+    window.addEventListener('load', function(){ setTimeout(gzHideLoader, 500); });
+  }
 })();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 </script>

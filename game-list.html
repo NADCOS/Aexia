@@ -76,7 +76,8 @@
   }
   a.gz-top-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   a.gz-top-btn:hover{background:#7ff0dc;color:#1a0f09;}
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity 0.25s ease,transform 0.25s ease,background 0.2s ease;}
+  .gz-messenger-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
   .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
@@ -284,6 +285,7 @@ gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 window.addEventListener('scroll', function(){
   var btn = document.getElementById('gz-top-btn');
   if (btn) btn.classList.toggle('gz-visible', window.scrollY > 400);
+  document.querySelectorAll('.gz-messenger-btn').forEach(function(m){ m.classList.toggle('gz-visible', window.scrollY > 260); });
   var h = document.documentElement;
   var max = h.scrollHeight - h.clientHeight;
   var p = document.getElementById('gz-progress');

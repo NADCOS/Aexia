@@ -63,7 +63,8 @@
   .gz-steps li.gz-step-done .gz-step-num{background:var(--coral);color:#1a0f09;border-color:var(--coral);}
   .gz-steps li.gz-step-done span:not(.gz-step-num){text-decoration:line-through;}
   .gz-footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:24px 28px;font-size:13px;color:var(--dim);letter-spacing:0.04em;text-transform:uppercase;border-top:1px solid var(--line);max-width:640px;margin:40px auto 0;}
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity 0.25s ease,transform 0.25s ease,background 0.2s ease;}
+  .gz-messenger-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
   .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
@@ -177,6 +178,7 @@ function gzToggleTheme(){
 })();
 gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 window.addEventListener('scroll', function(){
+  document.querySelectorAll('.gz-messenger-btn').forEach(function(m){ m.classList.toggle('gz-visible', window.scrollY > 260); });
   var h = document.documentElement;
   var max = h.scrollHeight - h.clientHeight;
   var p = document.getElementById('gz-progress');

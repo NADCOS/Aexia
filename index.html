@@ -136,17 +136,27 @@
   .gz-anim{opacity:0;animation:gzFadeUp 0.7s ease-out forwards;}
   @keyframes gzFadeUp{ from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
   .gz-hero-row{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:28px;}
+  .gz-price-hero{
+    display:flex;align-items:baseline;flex-wrap:wrap;gap:18px;
+    font-size:clamp(64px,10vw,116px);font-weight:900;color:var(--coral-text);letter-spacing:-0.02em;line-height:0.85;
+    margin:0 0 22px;
+    animation:gzPriceGlowPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes gzPriceGlowPulse{
+    0%,100%{text-shadow:0 0 0 rgba(75,228,198,0);transform:scale(1);}
+    50%{text-shadow:0 0 22px rgba(75,228,198,0.85),0 0 55px rgba(75,228,198,0.45);transform:scale(1.02);}
+  }
   .gz-price{
     font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral-text);letter-spacing:-0.01em;white-space:nowrap;
-    animation:gzPricePulse 2.6s ease-in-out infinite;
   }
   @keyframes gzPricePulse{
     0%,100%{filter:drop-shadow(0 0 0 rgba(75,228,198,0));} 50%{filter:drop-shadow(0 0 10px rgba(75,228,198,0.6));}
   }
   .gz-price sub{font-size:16px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;vertical-align:middle;display:block;margin-top:6px;}
+  .gz-price-hero-sub{font-size:15px;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:0.1em;}
   .gz-tagline{
     display:flex;align-items:center;gap:14px;flex-wrap:wrap;
-    font-size:15px;color:var(--dim);letter-spacing:0.03em;max-width:520px;
+    font-size:15px;color:var(--dim);letter-spacing:0.03em;max-width:520px;margin:0 0 28px;
   }
   .gz-btn{
     display:inline-flex;align-items:center;gap:8px;
@@ -264,7 +274,8 @@
   a.gz-top-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   a.gz-top-btn:hover{background:#7ff0dc;color:#1a0f09;}
 
-  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;transition:transform 0.2s ease,background 0.2s ease;}
+  .gz-messenger-btn{position:fixed;left:24px;bottom:24px;width:56px;height:56px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(0,0,0,0.35);z-index:60;text-decoration:none;opacity:0;pointer-events:none;transform:translateY(10px);transition:opacity 0.25s ease,transform 0.25s ease,background 0.2s ease;}
+  .gz-messenger-btn.gz-visible{opacity:1;pointer-events:auto;transform:translateY(0);}
   .gz-messenger-btn:hover{transform:scale(1.08);background:#7ff0dc;}
   .gz-messenger-btn svg{width:28px;height:28px;fill:#1a0f09;}
 
@@ -305,7 +316,7 @@
 
   @media (prefers-reduced-motion: reduce){
     .gz-anim,.gz-hero-title,.gz-hero-title .gz-accent{animation:none!important;opacity:1!important;transform:none!important;}
-    .gz-barcode::after,.gz-price,.gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-barcode::after,.gz-price,.gz-price-hero,.gz-loader-mark,.gz-loader-bar span{animation:none!important;}
     .gz-loader-bar span{width:100%!important;}
     .gz-step,.gz-step-badge,.gz-step-connector,.gz-cover-item,.gz-cover-item img,.gz-top-btn,.gz-messenger-btn,.gz-btn{transition:none!important;}
     .gz-reveal{transition:none!important;opacity:1!important;transform:none!important;}
@@ -359,11 +370,9 @@
       </div>
     </div>
     <h1 class="gz-hero-title">STEAM GAMES<br><span class="gz-accent">PACKAGE</span></h1>
-    <div class="gz-hero-row gz-anim" style="animation-delay:0.4s;">
-      <div class="gz-price">₱999<sub>One-time payment</sub></div>
-      <div class="gz-tagline">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</div>
-    </div>
-    <a class="gz-btn gz-btn-solid gz-anim" style="animation-delay:0.55s;" href="avail.html">↗ I Want To Avail</a>
+    <div class="gz-price-hero gz-anim" style="animation-delay:0.4s;">₱999<span class="gz-price-hero-sub">One-time&nbsp;payment</span></div>
+    <p class="gz-tagline gz-anim" style="animation-delay:0.5s;max-width:600px;">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</p>
+    <a class="gz-btn gz-btn-solid gz-anim" style="animation-delay:0.6s;" href="avail.html">↗ I Want To Avail</a>
   </header>
 
   <div class="gz-hr"></div>
@@ -583,6 +592,7 @@ gzApplyTheme(localStorage.getItem('gz-theme') || 'dark');
 window.addEventListener('scroll', function(){
   var btn = document.getElementById('gz-top-btn');
   if (btn) btn.classList.toggle('gz-visible', window.scrollY > 400);
+  document.querySelectorAll('.gz-messenger-btn').forEach(function(m){ m.classList.toggle('gz-visible', window.scrollY > 260); });
   var h = document.documentElement;
   var max = h.scrollHeight - h.clientHeight;
   var p = document.getElementById('gz-progress');

@@ -20,6 +20,10 @@
   .gz-root a:hover{color:var(--white);}
   .gz-brand-mark{width:44px;height:44px;object-fit:contain;margin-bottom:24px;}
   .gz-root[data-theme="light"] .gz-brand-mark{filter:invert(1);}
+  .gz-404-art{width:130px;height:auto;margin-bottom:8px;animation:gzFloat 3.6s ease-in-out infinite,gzFlicker 5s linear infinite;}
+  @keyframes gzFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
+  @keyframes gzFlicker{0%,92%,100%{opacity:1;}93%{opacity:0.4;}94%{opacity:1;}96%{opacity:0.5;}97%{opacity:1;}}
+  @media (prefers-reduced-motion: reduce){ .gz-404-art{animation:none!important;} }
   .gz-eyebrow{font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);margin-bottom:14px;}
   .gz-404{font-size:clamp(72px,16vw,160px);font-weight:900;letter-spacing:-0.02em;line-height:0.9;margin:0;color:var(--coral-text);}
   .gz-msg{font-size:clamp(20px,3vw,28px);font-weight:800;text-transform:uppercase;letter-spacing:-0.01em;margin:12px 0 10px;}
@@ -36,6 +40,14 @@
 <div class="gz-root" data-theme="dark" id="gz-theme-root">
   <img class="gz-brand-mark" src="assets/aexia-logo.svg" alt="Aexia logo">
   <div class="gz-eyebrow">AEXIA · Steam Games Package</div>
+  <svg class="gz-404-art" viewBox="0 0 160 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M46 50c0-14 10-22 24-22h20c14 0 24 8 24 22 0 16-8 28-20 28l-6-12H72l-6 12c-12 0-26-12-26-28z" stroke="var(--coral-text)" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M64 44v12M58 50h12" stroke="var(--coral-text)" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="104" cy="42" r="3.5" fill="var(--coral-text)"/>
+    <circle cx="114" cy="52" r="3.5" fill="var(--coral-text)"/>
+    <circle cx="94" cy="52" r="3.5" fill="var(--coral-text)"/>
+    <circle cx="104" cy="62" r="3.5" fill="var(--coral-text)"/>
+  </svg>
   <p class="gz-404">404</p>
   <p class="gz-msg">Page Not Found</p>
   <p class="gz-sub">This page doesn't exist or may have moved. Head back home or jump straight to the game list.</p>

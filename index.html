@@ -136,15 +136,27 @@
   .gz-anim{opacity:0;animation:gzFadeUp 0.7s ease-out forwards;}
   @keyframes gzFadeUp{ from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
   .gz-hero-row{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:28px;}
-  .gz-price-hero{
-    display:flex;align-items:baseline;flex-wrap:wrap;gap:18px;
-    font-size:clamp(64px,10vw,116px);font-weight:900;color:var(--coral-text);letter-spacing:-0.02em;line-height:0.85;
-    margin:0 0 22px;
-    animation:gzPriceGlowPulse 2.4s ease-in-out infinite;
+  .gz-hero-panel-band{position:relative;margin:0 -28px 28px;padding:56px 28px 28px;overflow:hidden;min-height:180px;display:flex;align-items:flex-end;}
+  .gz-hero-panel{position:absolute;inset:0;background:var(--coral);clip-path:polygon(0 22%,100% 0,100% 100%,0 100%);transform:scaleY(0);transform-origin:bottom;animation:gzPanelIn 0.85s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;}
+  @keyframes gzPanelIn{to{transform:scaleY(1);}}
+  .gz-price-on-panel{position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+  .gz-price-glitch{position:relative;display:inline-block;font-size:clamp(64px,9vw,104px);font-weight:900;letter-spacing:-0.02em;line-height:0.82;color:#141414;}
+  .gz-price-glitch::before,.gz-price-glitch::after{content:"₱999";position:absolute;top:0;left:0;white-space:nowrap;}
+  .gz-price-glitch::before{color:#ff4d6d;animation:gzGlitchTop 4.5s infinite;}
+  .gz-price-glitch::after{color:#1fb6ff;animation:gzGlitchBottom 4.5s infinite;}
+  @keyframes gzGlitchTop{
+    0%,92%,100%{transform:translate(0,0);clip-path:inset(0 0 60% 0);opacity:0;}
+    93%{transform:translate(-4px,-1px);clip-path:inset(8% 0 42% 0);opacity:0.85;}
+    95%{transform:translate(3px,1px);clip-path:inset(0 0 68% 0);opacity:0.85;}
+    97%{transform:translate(-3px,0);clip-path:inset(18% 0 32% 0);opacity:0.85;}
+    99%{transform:translate(0,0);clip-path:inset(0 0 60% 0);opacity:0;}
   }
-  @keyframes gzPriceGlowPulse{
-    0%,100%{text-shadow:0 0 0 rgba(75,228,198,0);transform:scale(1);}
-    50%{text-shadow:0 0 22px rgba(75,228,198,0.85),0 0 55px rgba(75,228,198,0.45);transform:scale(1.02);}
+  @keyframes gzGlitchBottom{
+    0%,92%,100%{transform:translate(0,0);clip-path:inset(60% 0 0 0);opacity:0;}
+    93%{transform:translate(4px,1px);clip-path:inset(50% 0 0 0);opacity:0.85;}
+    95%{transform:translate(-3px,-1px);clip-path:inset(64% 0 0 0);opacity:0.85;}
+    97%{transform:translate(3px,0);clip-path:inset(46% 0 0 0);opacity:0.85;}
+    99%{transform:translate(0,0);clip-path:inset(60% 0 0 0);opacity:0;}
   }
   .gz-price{
     font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral-text);letter-spacing:-0.01em;white-space:nowrap;
@@ -153,7 +165,7 @@
     0%,100%{filter:drop-shadow(0 0 0 rgba(75,228,198,0));} 50%{filter:drop-shadow(0 0 10px rgba(75,228,198,0.6));}
   }
   .gz-price sub{font-size:16px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;vertical-align:middle;display:block;margin-top:6px;}
-  .gz-price-hero-sub{font-size:15px;font-weight:800;color:var(--dim);text-transform:uppercase;letter-spacing:0.1em;}
+  .gz-price-hero-sub{font-size:15px;font-weight:800;color:rgba(26,15,9,0.65);text-transform:uppercase;letter-spacing:0.1em;}
   .gz-tagline{
     display:flex;align-items:center;gap:14px;flex-wrap:wrap;
     font-size:15px;color:var(--dim);letter-spacing:0.03em;max-width:520px;margin:0 0 28px;
@@ -303,6 +315,7 @@
     .gz-brand{padding:18px 18px;}
     .gz-nav-links a{padding:16px 16px;}
     .gz-footer-top,.gz-footer-bottom{padding-left:18px;padding-right:18px;}
+    .gz-hero-panel-band{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px;}
   }
 
   .gz-loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity 0.5s ease,visibility 0.5s ease;}
@@ -316,7 +329,9 @@
 
   @media (prefers-reduced-motion: reduce){
     .gz-anim,.gz-hero-title,.gz-hero-title .gz-accent{animation:none!important;opacity:1!important;transform:none!important;}
-    .gz-barcode::after,.gz-price,.gz-price-hero,.gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-barcode::after,.gz-price,.gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-hero-panel{animation:none!important;transform:scaleY(1)!important;}
+    .gz-price-glitch::before,.gz-price-glitch::after{animation:none!important;display:none;}
     .gz-loader-bar span{width:100%!important;}
     .gz-step,.gz-step-badge,.gz-step-connector,.gz-cover-item,.gz-cover-item img,.gz-top-btn,.gz-messenger-btn,.gz-btn{transition:none!important;}
     .gz-reveal{transition:none!important;opacity:1!important;transform:none!important;}
@@ -370,8 +385,14 @@
       </div>
     </div>
     <h1 class="gz-hero-title">STEAM GAMES<br><span class="gz-accent">PACKAGE</span></h1>
-    <div class="gz-price-hero">₱999<span class="gz-price-hero-sub">One-time&nbsp;payment</span></div>
-    <p class="gz-tagline gz-anim" style="animation-delay:0.5s;max-width:600px;">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</p>
+    <p class="gz-tagline gz-anim" style="animation-delay:0.3s;max-width:600px;">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</p>
+    <div class="gz-hero-panel-band">
+      <div class="gz-hero-panel" aria-hidden="true"></div>
+      <div class="gz-price-on-panel">
+        <span class="gz-price-glitch">₱999</span>
+        <span class="gz-price-hero-sub">One-time&nbsp;payment</span>
+      </div>
+    </div>
     <a class="gz-btn gz-btn-solid gz-anim" style="animation-delay:0.6s;" href="avail.html">↗ I Want To Avail</a>
   </header>
 

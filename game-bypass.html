@@ -12,27 +12,21 @@
 <meta property="og:image" content="assets/apple-touch-icon.png">
 <title>AEXIA — Game Bypass</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&display=swap');
   :root{
     --bg:#141414;--panel:#1c1b19;--line:rgba(255,255,255,0.1);
-    --coral:#e8172f;--coral-text:#ff3b52;--yellow:#f7d417;--white:#f4f2ee;--dim:#9a968f;
+    --coral:#4be4c6;--coral-text:#4be4c6;--white:#f4f2ee;--dim:#9a968f;
   }
   *{box-sizing:border-box;}
   body{margin:0;}
   .gz-skip-link{position:absolute;left:-999px;top:0;background:var(--coral);color:#1a0f09;padding:12px 20px;font-weight:800;font-size:14px;text-transform:uppercase;letter-spacing:0.06em;z-index:10000;border-radius:0 0 6px 0;}
   .gz-skip-link:focus{left:0;}
-  .gz-root{background:var(--bg);color:var(--white);font-family:'Space Grotesk',Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
-  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#c81030;}
+  .gz-root{background:var(--bg);color:var(--white);font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;line-height:1.5;overflow-x:hidden;}
+  .gz-root[data-theme="light"]{--bg:#f6f5f1;--panel:#ffffff;--line:rgba(20,18,15,0.12);--white:#18160f;--dim:#6b675f;--coral-text:#0d8a72;}
   .gz-root a{color:var(--coral-text);text-decoration:none;}
   .gz-root a:hover{color:var(--white);}
-  .gz-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;padding:6px 13px;}
-  .gz-eyebrow .gz-dot{color:#fff;font-size:13px;}
-  .gz-page-hero{background:var(--bg);padding:70px 28px 46px;}
-  .gz-page-hero-inner{max-width:640px;margin:0 auto;}
-  .gz-page-hero-label{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-bottom:18px;}
-  .gz-page-hero-label .gz-hero-dot{color:var(--coral-text);font-size:14px;}
-  .gz-page-hero-title{color:var(--white);font-size:clamp(36px,6vw,56px);line-height:0.98;text-transform:uppercase;letter-spacing:-0.01em;font-weight:700;margin:0 0 14px;}
-  .gz-page-hero-sub{color:var(--dim);font-size:15px;max-width:480px;margin:0;font-weight:400;}
+  .gz-eyebrow{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);}
+  .gz-eyebrow .gz-dot{color:var(--coral-text);font-size:15px;}
   .gz-nav{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);flex-wrap:wrap;}
   .gz-brand-link{display:flex;align-items:center;gap:12px;padding:22px 28px;font-weight:800;letter-spacing:0.08em;font-size:16px;text-transform:uppercase;white-space:nowrap;color:var(--white)!important;}
   .gz-brand-mark{width:30px;height:30px;flex:none;object-fit:contain;}
@@ -47,8 +41,8 @@
   .gz-warn{background:#e3a748;color:#3a2405;padding:16px 22px;font-size:14px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;border-radius:4px;margin:0 0 32px;border:1px solid rgba(58,36,5,0.15);}
   .gz-link-row{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 40px;}
   .gz-btn{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;padding:16px 28px;border-radius:2px;text-decoration:none;}
-  a.gz-btn-solid{background:#fff;color:#0a0a0a;}
-  a.gz-btn-solid:hover{background:#e7e7e7;color:#0a0a0a;}
+  a.gz-btn-solid{background:var(--coral);color:#1a0f09;}
+  a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
   a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
   a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
   .gz-steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;}
@@ -114,15 +108,11 @@
     <a class="gz-back" href="index.html">← Back To Home</a>
   </nav>
 
-  <header class="gz-page-hero">
-    <div class="gz-page-hero-inner">
-      <div class="gz-page-hero-label"><span class="gz-hero-dot">●</span> AEXIA Game Bypass</div>
-      <h1 class="gz-page-hero-title">Game Bypass</h1>
-      <p class="gz-page-hero-sub">Guide and download link for bypassing Denuvo protection on supported titles.</p>
-    </div>
-  </header>
-
   <section class="gz-section" id="gz-main">
+    <div class="gz-eyebrow"><span class="gz-dot">🛠</span> AEXIA Game Bypass</div>
+    <h2 class="gz-h2">Game Bypass</h2>
+    <p class="gz-sub">Guide and download link for bypassing Denuvo protection on supported titles.</p>
+
     <div class="gz-warn">⚠ Turn off any antivirus / Windows Security before downloading the bypass file.</div>
 
     <div class="gz-link-row">

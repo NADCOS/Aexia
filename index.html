@@ -12,15 +12,14 @@
 <meta property="og:image" content="assets/apple-touch-icon.png">
 <title>AEXIA — Steam Games Package</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500&display=swap');
   :root{
     --bg:#141414;
     --panel:#1c1b19;
     --line:rgba(255,255,255,0.1);
-    --coral:#e8172f;
-    --coral-text:#ff3b52;
-    --coral-dim:rgba(232,23,47,0.18);
-    --yellow:#f7d417;
+    --coral:#4be4c6;
+    --coral-text:#4be4c6;
+    --coral-dim:rgba(75,228,198,0.15);
     --white:#f4f2ee;
     --dim:#9a968f;
   }
@@ -30,7 +29,7 @@
     --line:rgba(20,18,15,0.12);
     --white:#18160f;
     --dim:#6b675f;
-    --coral-text:#c81030;
+    --coral-text:#0d8a72;
   }
   *{box-sizing:border-box;}
   body{margin:0;}
@@ -39,15 +38,18 @@
   .gz-root{
     background:var(--bg);
     color:var(--white);
-    font-family:'Space Grotesk',Arial,sans-serif;
+    font-family:'Barlow Condensed',Arial Narrow,Arial,sans-serif;
     line-height:1.5;
     overflow-x:hidden;
   }
   .gz-root a{color:var(--coral-text);text-decoration:none;}
   .gz-root a:hover{color:var(--white);}
   .gz-mono{font-family:'JetBrains Mono',monospace;}
-  .gz-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--coral);color:#fff;font-size:12px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;padding:6px 13px;}
-  .gz-eyebrow .gz-dot{color:#fff;font-size:13px;}
+  .gz-eyebrow{
+    display:flex;align-items:center;gap:10px;
+    font-size:13px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--dim);
+  }
+  .gz-eyebrow .gz-dot{color:var(--coral-text);font-size:15px;}
   .gz-logo-dot{width:14px;height:14px;display:inline-block;flex:none;background-color:var(--coral-text);-webkit-mask-image:url('assets/aexia-logo.svg');-webkit-mask-size:contain;-webkit-mask-repeat:no-repeat;-webkit-mask-position:center;mask-image:url('assets/aexia-logo.svg');mask-size:contain;mask-repeat:no-repeat;mask-position:center;}
 
   /* NAV */
@@ -79,11 +81,11 @@
   }
   .gz-nav-links a:hover{color:var(--coral-text);}
   a.gz-nav-cta{
-    background:#fff;color:#0a0a0a;
+    background:var(--coral);color:#1a0f09;
     padding:22px 30px;font-size:13px;font-weight:800;letter-spacing:0.1em;text-transform:uppercase;
     display:flex;align-items:center;gap:8px;white-space:nowrap;
   }
-  a.gz-nav-cta:hover{color:#0a0a0a;background:#e7e7e7;}
+  a.gz-nav-cta:hover{color:#1a0f09;background:#7ff0dc;}
   .gz-theme-toggle{
     background:transparent;border:1px solid var(--line);color:var(--white);
     width:42px;height:42px;border-radius:50%;font-size:16px;cursor:pointer;
@@ -99,7 +101,7 @@
   .gz-mobile-menu a{padding:16px 24px;font-size:14px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--white);border-top:1px solid var(--line);}
   .gz-mobile-menu a:first-child{border-top:none;}
   .gz-mobile-menu a:hover{color:var(--coral-text);}
-  .gz-mobile-menu a.gz-nav-cta{background:#fff;color:#0a0a0a;}
+  .gz-mobile-menu a.gz-nav-cta{background:var(--coral);color:#1a0f09;}
   @media (max-width:960px){
     .gz-nav-right > .gz-nav-links{display:none;}
     .gz-nav-right > a.gz-nav-cta{display:none;}
@@ -107,56 +109,77 @@
   }
 
   /* HERO */
-  .gz-hero-black{position:relative;background:var(--bg);overflow:hidden;padding:130px 28px 90px;}
-  .gz-hero-black-inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;}
-  .gz-hero-label{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);margin-bottom:28px;}
-  .gz-hero-label .gz-hero-dot{color:var(--coral-text);font-size:14px;}
-  .gz-hero-title-v3{font-size:clamp(50px,8.5vw,104px);line-height:0.98;letter-spacing:-0.02em;font-weight:700;text-transform:uppercase;color:var(--white);margin:0 0 30px;max-width:760px;}
-  .gz-accent-red{color:var(--coral-text);}
-  .gz-hero-tagline-v3{color:var(--dim);font-size:16px;line-height:1.6;max-width:440px;margin:0 0 30px;}
-  .gz-hero-price{display:flex;align-items:baseline;gap:14px;margin:0 0 36px;}
-  .gz-hero-price-value{font-size:clamp(48px,7vw,68px);font-weight:700;color:var(--white);letter-spacing:-0.01em;}
-  .gz-hero-price-label{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--dim);}
-  .gz-hero-btn-row-v3{display:flex;gap:14px;flex-wrap:wrap;}
-  .gz-glass-card{position:relative;z-index:2;max-width:280px;margin:56px 0 0 auto;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);backdrop-filter:blur(14px);padding:20px 22px;}
-  .gz-glass-card-icon{width:30px;height:30px;border-radius:50%;background:var(--coral-dim);color:var(--coral-text);display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:12px;}
-  .gz-glass-card-title{font-size:14px;font-weight:700;color:var(--white);margin-bottom:6px;}
-  .gz-glass-card-desc{font-size:12.5px;color:var(--dim);line-height:1.5;}
+  .gz-hero{padding:56px 28px 60px;max-width:1280px;margin:0 auto;}
+  .gz-hero-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:36px;}
+  .gz-hero-copy{max-width:340px;font-size:14px;font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--dim);}
+  .gz-barcode{
+    position:relative;overflow:hidden;
+    height:48px;width:220px;
+    background-image:repeating-linear-gradient(90deg, var(--white) 0 2px, transparent 2px 5px, var(--white) 5px 6px, transparent 6px 11px, var(--white) 11px 14px, transparent 14px 16px);
+    margin-top:16px;opacity:0.85;
+  }
+  .gz-barcode::after{
+    content:"";position:absolute;top:0;left:0;width:2px;height:100%;
+    background:var(--coral-text);box-shadow:0 0 8px var(--coral-text);
+    animation:gzBarcodeScan 2.8s ease-in-out infinite;
+  }
+  @keyframes gzBarcodeScan{
+    0%{left:0;opacity:0;} 10%{opacity:1;} 50%{left:calc(100% - 2px);} 60%{opacity:1;} 90%{opacity:0;} 100%{left:0;opacity:0;}
+  }
+  .gz-hero-title{
+    font-size:clamp(56px,11vw,132px);
+    font-weight:900;letter-spacing:-0.01em;text-transform:uppercase;
+    line-height:0.92;margin:0 0 28px;
+    opacity:0;animation:gzTitleIn 0.8s ease-out forwards;
+  }
+  .gz-hero-title .gz-accent{color:var(--coral-text);display:inline-block;opacity:0;animation:gzTitleIn 0.8s ease-out forwards 0.22s;}
+  @keyframes gzTitleIn{ from{opacity:0;transform:translateY(26px);} to{opacity:1;transform:translateY(0);} }
   .gz-anim{opacity:0;animation:gzFadeUp 0.7s ease-out forwards;}
   @keyframes gzFadeUp{ from{opacity:0;transform:translateY(16px);} to{opacity:1;transform:translateY(0);} }
+  .gz-hero-row{display:flex;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:28px;}
+  .gz-hero-panel-band{position:relative;margin:0 -28px 28px;padding:56px 28px 28px;overflow:hidden;min-height:180px;display:flex;align-items:flex-end;}
+  .gz-hero-panel{position:absolute;inset:0;background:var(--coral);clip-path:polygon(0 22%,100% 0,100% 100%,0 100%);transform:scaleY(0);transform-origin:bottom;animation:gzPanelIn 0.85s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;}
+  @keyframes gzPanelIn{to{transform:scaleY(1);}}
+  .gz-price-on-panel{position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;}
+  .gz-price-glitch{position:relative;display:inline-block;font-size:clamp(64px,9vw,104px);font-weight:900;letter-spacing:-0.02em;line-height:0.82;color:#141414;}
+  .gz-price-glitch::before,.gz-price-glitch::after{content:"₱999";position:absolute;top:0;left:0;white-space:nowrap;}
+  .gz-price-glitch::before{color:#ff4d6d;animation:gzGlitchTop 4.5s infinite;}
+  .gz-price-glitch::after{color:#1fb6ff;animation:gzGlitchBottom 4.5s infinite;}
+  @keyframes gzGlitchTop{
+    0%,92%,100%{transform:translate(0,0);clip-path:inset(0 0 60% 0);opacity:0;}
+    93%{transform:translate(-4px,-1px);clip-path:inset(8% 0 42% 0);opacity:0.85;}
+    95%{transform:translate(3px,1px);clip-path:inset(0 0 68% 0);opacity:0.85;}
+    97%{transform:translate(-3px,0);clip-path:inset(18% 0 32% 0);opacity:0.85;}
+    99%{transform:translate(0,0);clip-path:inset(0 0 60% 0);opacity:0;}
+  }
+  @keyframes gzGlitchBottom{
+    0%,92%,100%{transform:translate(0,0);clip-path:inset(60% 0 0 0);opacity:0;}
+    93%{transform:translate(4px,1px);clip-path:inset(50% 0 0 0);opacity:0.85;}
+    95%{transform:translate(-3px,-1px);clip-path:inset(64% 0 0 0);opacity:0.85;}
+    97%{transform:translate(3px,0);clip-path:inset(46% 0 0 0);opacity:0.85;}
+    99%{transform:translate(0,0);clip-path:inset(60% 0 0 0);opacity:0;}
+  }
+  .gz-price{
+    font-size:clamp(40px,6vw,56px);font-weight:800;color:var(--coral-text);letter-spacing:-0.01em;white-space:nowrap;
+  }
+  @keyframes gzPricePulse{
+    0%,100%{filter:drop-shadow(0 0 0 rgba(75,228,198,0));} 50%{filter:drop-shadow(0 0 10px rgba(75,228,198,0.6));}
+  }
+  .gz-price sub{font-size:16px;font-weight:700;color:var(--dim);text-transform:uppercase;letter-spacing:0.08em;vertical-align:middle;display:block;margin-top:6px;}
+  .gz-price-hero-sub{font-size:15px;font-weight:800;color:rgba(26,15,9,0.65);text-transform:uppercase;letter-spacing:0.1em;}
+  .gz-tagline{
+    display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+    font-size:15px;color:var(--dim);letter-spacing:0.03em;max-width:520px;margin:0 0 28px;
+  }
   .gz-btn{
     display:inline-flex;align-items:center;gap:8px;
-    font-size:14px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;
+    font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;
     padding:16px 28px;border-radius:2px;cursor:pointer;text-decoration:none;
   }
-  a.gz-btn-solid{background:#fff;color:#0a0a0a;border:1px solid transparent;}
-  a.gz-btn-solid:hover{background:#e7e7e7;color:#0a0a0a;}
-  .gz-root[data-theme="light"] a.gz-btn-solid{border-color:rgba(0,0,0,0.15);}
+  a.gz-btn-solid{background:var(--coral);color:#1a0f09;border:none;}
+  a.gz-btn-solid:hover{background:#7ff0dc;color:#1a0f09;}
   a.gz-btn-outline{background:transparent;color:var(--white);border:1px solid var(--line);}
   a.gz-btn-outline:hover{border-color:var(--coral-text);color:var(--coral-text);}
-
-  /* WHITE PANEL */
-  .gz-white-panel{background:#f2f0ec;border-radius:28px 28px 0 0;padding:74px 28px 66px;}
-  .gz-white-panel-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:start;}
-  .gz-white-label{font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8a8580;margin-bottom:18px;}
-  .gz-white-heading{font-size:clamp(24px,3.2vw,36px);line-height:1.32;font-weight:700;color:#141414;max-width:640px;margin:0 0 20px;}
-  .gz-dim-run{color:#a9a49e;font-weight:500;}
-  .gz-white-caption{font-size:14.5px;color:#6b675f;max-width:440px;margin:0;line-height:1.6;}
-  .gz-icon-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px 40px;}
-  .gz-icon-feature-glyph{font-size:20px;color:var(--coral-text);margin-bottom:10px;}
-  .gz-icon-feature-title{font-size:15px;font-weight:700;color:#141414;margin-bottom:4px;}
-  .gz-icon-feature-desc{font-size:13px;color:#6b675f;line-height:1.5;}
-
-  /* STATS */
-  .gz-stats-dark{background:var(--bg);padding:70px 28px;}
-  .gz-stats-dark-inner{max-width:1280px;margin:0 auto;}
-  .gz-stats-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;margin-bottom:36px;}
-  .gz-stats-title{font-size:clamp(24px,3.4vw,36px);font-weight:700;color:var(--white);text-transform:uppercase;letter-spacing:-0.01em;margin:0;max-width:520px;}
-  .gz-stats-sub{font-size:13px;color:var(--dim);letter-spacing:0.08em;text-transform:uppercase;}
-  .gz-stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
-  .gz-stat-card{background:var(--panel);border:1px solid var(--line);padding:26px 24px;}
-  .gz-stat-card-label{font-size:12px;color:var(--dim);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:14px;}
-  .gz-stat-card-value{font-size:clamp(24px,2.8vw,32px);font-weight:700;color:var(--white);letter-spacing:-0.01em;}
 
   /* HOW IT WORKS */
   .gz-steps{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr;align-items:start;gap:0;}
@@ -292,19 +315,19 @@
   .gz-reveal.gz-in{opacity:1;transform:translateY(0);}
 
   @media (max-width:820px){
-    .gz-setup-grid,.gz-pay-grid,.gz-white-panel-inner{grid-template-columns:1fr;gap:32px;}
+    .gz-features,.gz-setup-grid,.gz-pay-grid{grid-template-columns:1fr;gap:32px;}
     .gz-steps{grid-template-columns:1fr;gap:16px;}
     .gz-step-connector{display:none;}
     .gz-nav-cta{margin-left:auto;}
-    .gz-hero-black{padding-top:90px;}
   }
   @media (max-width:480px){
-    .gz-section,.gz-hero-black,.gz-white-panel,.gz-stats-dark{padding-left:18px;padding-right:18px;}
+    .gz-section,.gz-hero{padding-left:18px;padding-right:18px;}
     .gz-hr{margin:0 18px;}
     .gz-bar{margin:0 18px;}
     .gz-brand{padding:18px 18px;}
     .gz-nav-links a{padding:16px 16px;}
     .gz-footer-top,.gz-footer-bottom{padding-left:18px;padding-right:18px;}
+    .gz-hero-panel-band{margin-left:-18px;margin-right:-18px;padding-left:18px;padding-right:18px;}
   }
 
   .gz-loader{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;transition:opacity 0.5s ease,visibility 0.5s ease;}
@@ -317,8 +340,10 @@
   @keyframes gzLoaderFill{0%{width:0%;}60%{width:75%;}100%{width:100%;}}
 
   @media (prefers-reduced-motion: reduce){
-    .gz-anim{animation:none!important;opacity:1!important;transform:none!important;}
-    .gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-anim,.gz-hero-title,.gz-hero-title .gz-accent{animation:none!important;opacity:1!important;transform:none!important;}
+    .gz-barcode::after,.gz-price,.gz-loader-mark,.gz-loader-bar span{animation:none!important;}
+    .gz-hero-panel{animation:none!important;transform:scaleY(1)!important;}
+    .gz-price-glitch::before,.gz-price-glitch::after{animation:none!important;display:none;}
     .gz-loader-bar span{width:100%!important;}
     .gz-step,.gz-step-badge,.gz-step-connector,.gz-cover-item,.gz-cover-item img,.gz-top-btn,.gz-messenger-btn,.gz-btn{transition:none!important;}
     .gz-reveal{transition:none!important;opacity:1!important;transform:none!important;}
@@ -363,54 +388,31 @@
     </div>
   </nav>
 
-  <header class="gz-hero-black" id="gz-main">
-    <div class="gz-hero-black-inner">
-      <div class="gz-hero-label gz-anim" style="animation-delay:0s;"><span class="gz-hero-dot">●</span> One-Time Payment Package</div>
-      <h1 class="gz-hero-title-v3 gz-anim" style="animation-delay:0.1s;">STEAM GAMES<br><span class="gz-accent-red">PACKAGE</span></h1>
-      <p class="gz-hero-tagline-v3 gz-anim" style="animation-delay:0.2s;">A massive Steam library for a single payment. Safe, device-based setup — you stay logged into your own account the whole time.</p>
-      <div class="gz-hero-price gz-anim" style="animation-delay:0.25s;"><span class="gz-hero-price-value">₱999</span><span class="gz-hero-price-label">One-Time Payment</span></div>
-      <div class="gz-hero-btn-row-v3 gz-anim" style="animation-delay:0.3s;">
-        <a class="gz-btn gz-btn-solid" href="avail.html">Avail Now ↗</a>
-        <a class="gz-btn gz-btn-outline" href="#gz-game-list">View Game List ▸</a>
-      </div>
-      <div class="gz-glass-card gz-anim" style="animation-delay:0.4s;">
-        <div class="gz-glass-card-icon">♾</div>
-        <div class="gz-glass-card-title">Lifetime Access</div>
-        <div class="gz-glass-card-desc">One payment. No subscriptions. Access never expires.</div>
-      </div>
-    </div>
-  </header>
-
-  <div class="gz-white-panel">
-    <div class="gz-white-panel-inner">
+  <header class="gz-hero" id="gz-main">
+    <div class="gz-hero-top">
+      <div class="gz-eyebrow gz-anim" style="animation-delay:0s;"><span class="gz-logo-dot" aria-hidden="true"></span> Steam Package · Aexia PH</div>
       <div>
-        <div class="gz-white-label">Steam Games Package</div>
-        <h2 class="gz-white-heading">A one-time payment for a full Steam library, <span class="gz-dim-run">built for players who want everything without monthly fees.</span></h2>
-        <p class="gz-white-caption">Every title is added straight to your own Steam library. You keep your account, your saves, and your achievements.</p>
-      </div>
-      <div class="gz-icon-grid">
-        <div><div class="gz-icon-feature-glyph">▦</div><div class="gz-icon-feature-title">Full Library Access</div><div class="gz-icon-feature-desc">Hundreds of titles included, one payment.</div></div>
-        <div><div class="gz-icon-feature-glyph">◆</div><div class="gz-icon-feature-title">Lifetime, No Fees</div><div class="gz-icon-feature-desc">No subscriptions or renewals, ever.</div></div>
-        <div><div class="gz-icon-feature-glyph">✺</div><div class="gz-icon-feature-title">Safe Device Setup</div><div class="gz-icon-feature-desc">Device-based — your account stays yours.</div></div>
-        <div><div class="gz-icon-feature-glyph">❈</div><div class="gz-icon-feature-title">Regularly Updated</div><div class="gz-icon-feature-desc">New and popular titles added often.</div></div>
+        <p class="gz-hero-copy gz-anim" style="animation-delay:0.1s;">Installed directly to your Steam library.</p>
+        <div class="gz-barcode gz-anim" style="animation-delay:0.2s;"></div>
       </div>
     </div>
-  </div>
-
-  <section class="gz-stats-dark">
-    <div class="gz-stats-dark-inner">
-      <div class="gz-stats-head">
-        <h2 class="gz-stats-title">What You Get, In Numbers</h2>
-        <span class="gz-stats-sub">By The Numbers</span>
-      </div>
-      <div class="gz-stats-grid">
-        <div class="gz-stat-card"><div class="gz-stat-card-label">Setup Time</div><div class="gz-stat-card-value">5–10 <span class="gz-accent-red">Min</span></div></div>
-        <div class="gz-stat-card"><div class="gz-stat-card-label">Payment Method</div><div class="gz-stat-card-value">GCash</div></div>
-        <div class="gz-stat-card"><div class="gz-stat-card-label">Access</div><div class="gz-stat-card-value"><span class="gz-accent-red">Lifetime</span></div></div>
-        <div class="gz-stat-card"><div class="gz-stat-card-label">Per Setup</div><div class="gz-stat-card-value">1 <span class="gz-accent-red">Device</span></div></div>
+    <h1 class="gz-hero-title">STEAM GAMES<br><span class="gz-accent">PACKAGE</span></h1>
+    <p class="gz-tagline gz-anim" style="animation-delay:0.3s;max-width:600px;">Lifetime access · Available worldwide, no regional restrictions · Safe and secure for your Steam account</p>
+    <div class="gz-hero-panel-band">
+      <div class="gz-hero-panel" aria-hidden="true"></div>
+      <div class="gz-price-on-panel">
+        <span class="gz-price-glitch">₱999</span>
+        <span class="gz-price-hero-sub">One-time&nbsp;payment</span>
       </div>
     </div>
-  </section>
+    <div class="gz-trust-row gz-anim" style="animation-delay:0.6s;">
+      <span class="gz-trust-chip"><span class="gz-dot">🔒</span> Secure GCash Payment</span>
+      <span class="gz-trust-chip"><span class="gz-dot">♾</span> Lifetime Access</span>
+      <span class="gz-trust-chip"><span class="gz-dot">🌍</span> Worldwide, No Restrictions</span>
+      <span class="gz-trust-chip"><span class="gz-dot">🛡</span> Account Stays Safe</span>
+    </div>
+    <a class="gz-btn gz-btn-solid gz-anim" style="animation-delay:0.7s;" href="avail.html">↗ I Want To Avail</a>
+  </header>
 
   <div class="gz-hr"></div>
 
@@ -438,6 +440,35 @@
   </section>
 
   <div class="gz-hr"></div>
+
+  <section class="gz-section">
+    <div class="gz-features gz-reveal">
+      <ul class="gz-feature-list">
+        <li><span class="gz-arrow">→</span> One-time payment, lifetime access</li>
+        <li><span class="gz-arrow">→</span> Available worldwide — no regional restrictions</li>
+        <li><span class="gz-arrow">→</span> Compatible with PCs, laptops &amp; handhelds</li>
+        <li><span class="gz-arrow">→</span> Supports Steam achievements &amp; cloud saves</li>
+        <li><span class="gz-arrow">→</span> Regularly updated with popular titles</li>
+        <li><span class="gz-arrow">→</span> Fast downloads, easy setup — install &amp; play</li>
+      </ul>
+      <div class="gz-stat-grid">
+        <div class="gz-stat">
+          <span class="gz-stat-mark"></span>
+          <div><div class="gz-stat-label">What's included</div><div class="gz-stat-value">Full Steam Library Access</div></div>
+        </div>
+        <div class="gz-stat">
+          <span class="gz-stat-mark round"></span>
+          <div><div class="gz-stat-label">Security</div><div class="gz-stat-value">Safe &amp; Secure Setup</div></div>
+        </div>
+        <div class="gz-stat">
+          <span class="gz-stat-mark"></span>
+          <div><div class="gz-stat-label">Setup time</div><div class="gz-stat-value">5–10 Minutes, Remote</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gz-bar">🎮 This is a tool for Steam apps — not a shared account.</div>
 
   <section class="gz-section">
     <div class="gz-setup-grid gz-reveal">
